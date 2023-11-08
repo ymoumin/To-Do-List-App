@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {AuthenticationService} from '../../../services/users/authentication.service';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup, ValidatorFn, Validators} from '@angular/forms';
 import {TaskService} from '../../../services/tasks/task.service';
 import {ITask} from '../../../model/task.model';
 import {SubscriptionLike} from 'rxjs';
@@ -59,8 +59,29 @@ export class ProfileComponent {
       email: new FormControl(this.email,Validators.pattern('^[^\\.\\s][\\w\\-]+(\\.[\\w\\-]+)*@([\\w-]+\\.)+[\\w-]{2,}$')),
       password: new FormControl(this.password,Validators.pattern('^(?=.*[a-z].*[a-z])(?=.*[!"#...\\d].*[!"#...\\d]).{8,}$')),
       confirmedPassword: new FormControl(this.password,Validators.required)
-    }
+    },
+    { validators: [this.matchValidator('password', 'confirmedPassword')]}
   );
+
+  matchValidator(controlName: string, matchingControlName: string): ValidatorFn {
+    return (abstractControl: AbstractControl) => {
+      const control = abstractControl.get(controlName);
+      const matchingControl = abstractControl.get(matchingControlName);
+
+      if (matchingControl!.errors && !matchingControl!.errors?.['confirmedValidator']) {
+        return null;
+      }
+
+      if (control!.value !== matchingControl!.value) {
+        const error = { confirmedValidator: 'Passwords do not match.' };
+        matchingControl!.setErrors(error);
+        return error;
+      } else {
+        matchingControl!.setErrors(null);
+        return null;
+      }
+    }
+  }
 
   enableEdit(){
     this.edit = !this.edit;
