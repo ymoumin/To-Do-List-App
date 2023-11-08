@@ -9,7 +9,7 @@ The tasks are managed in a dashboard "Tasks" and can be dragged and dropped betw
 
 HINT: The user information is manageable in the "Profile" page, by clicking the cute yeti's nose. Carefull he might get mad!
 
-![Cute Yeti](https://imgur.com/a/lmYmZAN)
+![Cute Yeti](https://i.imgur.com/vIbYxhU.png)
 
 Task Progress is also tracked below, in the "Profile" page.
 
@@ -70,7 +70,7 @@ Further explore the Karma tool for more in-depth testing.
 
 # Important
 
-Have fun!
+![Scary Yeti](https://i.imgur.com/aDX3WP5m.png)
 
-![Scary Yeti](https://imgur.com/a/AOCSd9H)
+Have fun!
 
