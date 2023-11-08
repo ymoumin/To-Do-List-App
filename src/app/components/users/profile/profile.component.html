@@ -1,0 +1,175 @@
+<div class="profile">
+
+
+      <div class="profile-content">
+
+  <mat-grid-list class="content" cols="2" rowHeight="2:1.5">
+
+    <mat-grid-tile class="overview">
+      <mat-grid-tile-header class="mat-headline-3 header">
+        <div>Profile</div>
+      </mat-grid-tile-header>
+      <mat-card>
+<!--          <img mat-card-xl-image alt="" src="./assets/avatar.png">-->
+        <div class="hit-area">
+          <div class="hitbox" id="a-1"></div>
+          <div class="hitbox" id="a-2"></div>
+          <div class="hitbox" id="a-3"></div>
+          <div class="hitbox" id="a-4"></div>
+          <div class="hitbox" id="a-5"></div>
+          <div class="hitbox" id="b-1"></div>
+          <div class="hitbox" id="b-2"></div>
+          <div class="hitbox" id="b-3"></div>
+          <div class="hitbox" id="b-4"></div>
+          <div class="hitbox" id="b-5"></div>
+          <div class="hitbox" id="c-1"></div>
+          <div class="hitbox" id="c-2"></div>
+          <div class="hitbox" id="c-3">
+            <button mat-button (click)="enableEdit()"> <img class="edit-profile" alt="" src="/assets/nose.jpeg"> </button>
+            <div style="text-align: center; margin-right: 8px; color: red">
+            <mat-icon >keyboard_arrow_up</mat-icon>
+            </div>
+          </div>
+          <div class="hitbox" id="c-4"></div>
+          <div class="hitbox" id="c-5"></div>
+          <div class="hitbox" id="d-1"></div>
+          <div class="hitbox" id="d-2"></div>
+          <div class="hitbox" id="d-3"></div>
+          <div class="hitbox" id="d-4"></div>
+          <div class="hitbox" id="d-5"></div>
+          <div class="hitbox" id="e-1"></div>
+          <div class="hitbox" id="e-2"></div>
+          <div class="hitbox" id="e-3"></div>
+          <div class="hitbox" id="e-4"></div>
+          <div class="hitbox" id="e-5"></div>
+
+          <div class="eye">
+            <div class="pupil"></div>
+          </div>
+          <div class="eye">
+            <div class="pupil"></div>
+          </div>
+          <div class="eyelid"></div>
+          <div class="eyelid"></div>
+
+        </div>
+      </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div>
+      <mat-card class="login">
+        <div class="login-card">
+          <mat-card-content class="login-field">
+            <form class="sign-form" (change)="isDiff()" [formGroup]="user" >
+
+              <h2 *ngIf="!edit" class="title">Account Information</h2>
+              <h2 *ngIf="edit" class="title">Edit Profile</h2>
+
+              <div>
+                <label>Username: </label>
+                <mat-form-field class="full-width-input">
+                  <input [readonly]="!edit" matInput #userName [(ngModel)]="username" placeholder="Username" maxlength="10" formControlName="userName" required>
+                  <mat-hint *ngIf="disabled">{{userName.value?.length || 0}}/10</mat-hint>
+                  <mat-error *ngIf="edit"> Minimum Required characters {{userName.value?.length || 0}}/5 </mat-error>
+                </mat-form-field>
+              </div>
+
+
+              <div>
+                <label>Email: </label>
+                <mat-form-field class="full-width-input">
+                  <input [readonly]="!edit" matInput [(ngModel)]="email" placeholder="Email" formControlName="email" required>
+                  <mat-error *ngIf="edit"> Please provide a valid email address </mat-error>
+                </mat-form-field>
+              </div>
+
+              <div>
+                <label>Password: </label>
+                <mat-form-field class="password-input">
+                  <input [type]="hide1 ? 'password' : 'text'" [readonly]="!edit" matInput #firstPassword [(ngModel)]="password" type="password" placeholder="************" formControlName="password" required>
+                  <button class="show" mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
+                    <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                  <mat-error *ngIf="edit"> * Minimum 8 chars in total.</mat-error>
+                  <mat-error *ngIf="edit"> * At least two letters.</mat-error>
+                  <mat-error *ngIf="edit"> * At least two digits or symbols.</mat-error>
+
+                </mat-form-field>
+              </div>
+
+              <div *ngIf="edit">
+                <label>Confirm Password: </label>
+                <mat-form-field  class="full-width-input">
+                  <input [type]="hide2 ? 'password' : 'text'" [readonly]="!edit" matInput show-hide-input #secondPassword type="password" placeholder="************" formControlName="confirmedPassword">
+                  <button class="show" mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
+                    <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                  <mat-error *ngIf="edit"> Passwords do not Match </mat-error>
+                </mat-form-field>
+              </div>
+
+            </form>
+
+            <div style="display: flex;justify-content: space-between">
+              <button [disabled]="!disabled || !user.valid" *ngIf="edit" type="submit" (click)="editUser()" class="login-btn" mat-raised-button color="primary">Save Changes</button>
+              <mat-error style="padding-top: 25px;" *ngIf="!disabled && edit">No Changes!</mat-error>
+            </div>
+          </mat-card-content>
+
+        </div>
+
+      </mat-card>
+<div style="display: flex;justify-content: space-between">
+      <button *ngIf="!edit" type="submit" (click)="logOut()"  mat-raised-button color="warn"><mat-icon class="top-icon">exit_to_app</mat-icon>Log Off</button>
+        <button *ngIf="!edit" type="submit" (click)="remove()"  mat-raised-button color="warn"><mat-icon class="top-icon">delete</mat-icon>Delete User</button>
+</div>
+</div>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+
+  <mat-grid-list cols="1" rowHeight="2:1">
+
+    <mat-card class="info">
+      <mat-grid-list cols="3" rowHeight="2:1">
+
+        <mat-grid-tile>
+          <div>
+            <mat-card-title> <h1>Tasks To Do</h1> </mat-card-title>
+            <mat-progress-bar color="warn" mode="determinate" [value]="todo.length/allTasks.length*100"></mat-progress-bar>
+            <mat-card-content class="progress">
+              {{todo.length}} out of {{allTasks.length}}
+            </mat-card-content>
+          </div>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <div>
+            <mat-card-title> <h1>Tasks in Progress</h1> </mat-card-title>
+            <mat-progress-bar color="warn" mode="determinate" [value]="inProgress.length/allTasks.length*100"></mat-progress-bar>
+            <mat-card-content class="progress">
+              {{inProgress.length}} out of {{allTasks.length}}
+            </mat-card-content>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div>
+            <mat-card-title> <h1>Finished Tasks</h1> </mat-card-title>
+            <mat-progress-bar color="warn" mode="determinate" [value]="done.length/allTasks.length*100"></mat-progress-bar>
+            <mat-card-content class="progress">
+              {{done.length}} out of {{allTasks.length}}
+            </mat-card-content>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-card>
+
+  </mat-grid-list>
+
+        </div>
+
+
+</div>
+
+

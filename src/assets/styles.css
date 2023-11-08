@@ -1,0 +1,68 @@
+
+
+
+.task-card img {
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+button {
+    margin-top: 20px;
+    height: 40px;
+    font-size: 20px;
+    background: #1a7ce7;
+    color: white;
+    border-radius: 4px;
+}
+
+.demo {
+    max-width: 300px;
+    margin: 20px auto;
+    font-size: 25px;
+}
+
+.warn {
+  color:red;
+}
+
+.highlighted {
+  box-shadow: 0 2px 16px 0 #de1e19, 0 3px 8px 0 rgba(226, 21, 19, 0.47), 0 6px 8px -1px #b41c18;
+}
+
+.mdc-list{
+  padding: 0!important;
+
+}
+
+.cdk-overlay-connected-position-bounding-box > .cdk-overlay-pane{
+  margin-left: 8% !important;
+}
+
+.mat-mdc-snack-bar-action{
+  margin-top: 0;
+}
+
+.mat-mdc-snack-bar-container {
+  --mdc-snackbar-container-color: dimgrey !important;
+}
+
+.mat-mdc-snack-bar-container > .mat-mdc-snack-bar-label {
+  font-weight: bolder;
+}
+
+.mat-mdc-snack-bar-action>.mdc-button__label{
+  color: #76becf;
+}
+
+.mat-mdc-tooltip-trigger {
+  margin-top: 0;
+}
+.mat-mdc-paginator-container{
+  margin-bottom: 20px;
+}
+
+
+
+
+
+

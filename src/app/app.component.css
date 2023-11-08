@@ -1,0 +1,68 @@
+
+.top  {
+
+  background: #76becf;
+  padding: 2px 30px;
+  border: 1px solid grey;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.top-title, .top-menu{
+
+  font-size: 2em;
+  text-shadow: grey 2px 2px;
+  color: white!important;
+}
+
+.top-menu{
+  font-weight: bold;
+  padding: 50px;
+  padding-right: 20px!important;
+  padding-left: 20px!important;
+  padding-bottom: 10px!important;
+}
+
+.top-icon{
+  color: #76becf;
+}
+
+.top-btn{
+  border-radius: 0;
+  background-color: #eee;
+}
+
+.top-menu img {
+  height: 70px;
+  width: 70px;
+  padding-bottom: 30px;
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+}
+
+.logo {
+  max-height: 55px;
+}
+
+.example-header-image {
+  filter: hue-rotate(-10deg);
+}
+
+.top > #cdk-overlay-0{
+  width:400px!important;
+}
+
+
+@media(max-width: 700px) {
+    .top{
+        justify-content: center;
+        font-size: 6vw;
+    }
+}
+
+
+
+
+
+

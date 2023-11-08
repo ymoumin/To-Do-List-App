@@ -1,0 +1,42 @@
+.sidenav-container {
+    background: #eee;
+    height: 93%;
+}
+
+.nav{
+    min-width: 10%;
+}
+
+.nav-header{
+    font-size: 20px;
+    color:grey;
+}
+
+.nav-icon {
+    position:relative;
+    top: 3px;
+}
+
+.active {
+    color: #76becf!important;
+}
+
+.focus{
+    border-left: 5px solid #76becf
+}
+
+.nav-button{
+    position: relative;
+    background-color: white;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    color: grey!important;
+}
+
+.open{
+    color: #76becf!important;
+}
+
+.hidden {
+  visibility: hidden;
+}

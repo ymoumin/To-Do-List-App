@@ -1,0 +1,108 @@
+<button mat-button class="add" (click)="openDialog()"> <mat-icon>add</mat-icon> Add Task</button>
+<!--SHOW DIALOG ON BUTTON CLICK-->
+
+<div class="dashboard">
+
+    <div class="categories">
+
+        <div class="column-category">
+            <div [ngClass]="['mat-headline-3', 'category']" >To do</div>
+            <mat-card
+                    cdkDropList
+                    id="TO DO"
+                    #todoList="cdkDropList"
+                    [cdkDropListData]="todo"
+                    [cdkDropListConnectedTo]="[doneList, inProgressList]"
+                    (cdkDropListDropped)="drop($event)"
+                    (cdkDropListEntered)="hidingEmpty()"
+                    class="list">
+                <p class="empty-label" *ngIf="todo.length === 0 && showEmpty">Empty list</p>
+                <div *ngFor="let task of todo" cdkDrag (cdkDragDropped)="editTask($event,task)">
+                    <task-card class="task" [task]="task" (refreshTasks)="refreshTasks()"></task-card>
+                  <div *ngIf="window.innerWidth < 700" class="drag-handle" cdkDragHandle>
+                    <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
+                      <path d="M0 0h24v24H0z" fill="none"></path>
+                    </svg>
+                  </div>
+                </div>
+            </mat-card>
+
+        </div>
+
+        <div class="vl"></div>
+
+        <div class="column-category">
+            <div [ngClass]="['mat-headline-3', 'category']">Doing</div>
+            <mat-card
+                    cdkDropList
+                    id="DOING"
+                    #inProgressList="cdkDropList"
+                    [cdkDropListData]="inProgress"
+                    [cdkDropListConnectedTo]="[todoList, doneList]"
+                    (cdkDropListDropped)="drop($event)"
+                    (cdkDropListEntered)="hidingEmpty()"
+                    class="list">
+                <p class="empty-label" *ngIf="inProgress.length === 0 && showEmpty">Empty list</p>
+                <div *ngFor="let task of inProgress" cdkDrag (cdkDragDropped)="editTask($event,task)">
+                    <task-card class="task" [task]="task" (refreshTasks)="refreshTasks()"></task-card>
+                  <div *ngIf="window.innerWidth < 700" class="drag-handle" cdkDragHandle>
+                    <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
+                      <path d="M0 0h24v24H0z" fill="none"></path>
+                    </svg>
+                  </div>
+                </div>
+            </mat-card>
+<!--            <ng-container class="tasks" *ngFor="let task of tasks">-->
+<!--                <task-card [task]="task" *ngIf="task.status=='DOING'"></task-card>-->
+<!--            </ng-container>-->
+        </div>
+
+        <div class="vl"></div>
+
+        <div class="column-category">
+            <div [ngClass]="['mat-headline-3', 'category']">Done</div>
+            <mat-card
+
+                    cdkDropList
+                    id="DONE"
+                    #doneList="cdkDropList"
+                    [cdkDropListData]="done"
+                    [cdkDropListConnectedTo]="[todoList, inProgressList]"
+                    (cdkDropListDropped)="drop($event)"
+                    (cdkDropListEntered)="hidingEmpty()"
+                    class="list">
+
+                <p class="empty-label" *ngIf="done.length === 0 && showEmpty">Empty list</p>
+                <div class="drag" *ngFor="let task of done" cdkDrag (cdkDragDropped)="editTask($event,task)">
+
+                    <task-card class="task" [task]="task" (refreshTasks)="refreshTasks()"></task-card>
+
+                  <div *ngIf="window.innerWidth < 700" class="drag-handle" cdkDragHandle>
+                    <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
+                      <path d="M0 0h24v24H0z" fill="none"></path>
+                    </svg>
+                  </div>
+<!--                    <div class="test">Slide Screen here!</div>-->
+                </div>
+            </mat-card>
+<!--            <ng-container class="tasks" *ngFor="let task of tasks">-->
+<!--                <task-card [task]="task" *ngIf="task.status=='DONE'"></task-card>-->
+<!--            </ng-container>-->
+        </div>
+
+    </div>
+
+
+
+</div>
+<mat-paginator class="paginator" [length]="allTasks.length"
+               (page)="handlePageEvent($event)"
+               [pageSize]="6"
+               [pageSizeOptions]="[3, 6]"
+               aria-label="Select page">
+</mat-paginator>
+<!--MODAL-->
+

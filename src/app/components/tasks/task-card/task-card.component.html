@@ -1,0 +1,43 @@
+
+<div class="task-card" *ngIf="task" #container>
+
+
+  <div [ngSwitch]="task.priority" class="task-priority">
+    <mat-icon style="color: red" *ngSwitchCase="'high'">warning</mat-icon>
+
+    <mat-icon style="color: orange"  *ngSwitchCase="'medium'">priority_high</mat-icon>
+
+    <mat-icon style="color: green"  *ngSwitchCase="'low'">low_priority</mat-icon>
+  </div>
+
+  <button mat-button-flat class="delete" (click)="deleteTask()"><mat-icon>clear</mat-icon></button>
+  <a href="#" onclick="return false;" (click)="updateTask()" class="task-id">
+    {{"#"+task.id }}
+  </a>
+  <div class="task-title">
+    {{ task.title }}
+  </div>
+<!--  <img width="300" alt="Angular Logo"-->
+<!--       [src]="task.iconUrl">-->
+
+<!--  <ng-content select="task-image"-->
+<!--              *ngIf="task.iconUrl"></ng-content>-->
+
+  <div class="task-description">
+{{ task.description }}
+<!--    Edit Title: <input #taskTitle [value]="task.description">-->
+
+  </div>
+
+
+
+<!--  <button (click)="onSaveClicked(taskTitle.value)" [style]="'background-color:green;'">See Details</button>-->
+
+</div>
+
+
+
+
+
+
+

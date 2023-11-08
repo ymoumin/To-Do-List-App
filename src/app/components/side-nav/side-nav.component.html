@@ -1,0 +1,39 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav mode="push" class="nav" >
+
+        <mat-nav-list class="nav-list" *ngFor="let route of routes; index as i">
+
+          <mat-list-item class="nav-item" [routerLink]="route" routerLinkActive="focus">
+            <h3 class="nav-header" routerLinkActive="active" [ngSwitch]="i">
+              <!--       Task       -->
+              <mat-icon *ngSwitchCase="0" class="nav-icon">dashboard</mat-icon>
+              <!--       Profile       -->
+              <mat-icon *ngSwitchCase="1" class="nav-icon">account_circle</mat-icon>
+
+              {{route.split('/')[0] | titlecase}}
+            </h3>
+          </mat-list-item>
+
+<!--            <mat-list-item class="nav-item" routerLink="/tasks" routerLinkActive="focus">-->
+<!--                <h3 class="nav-header" routerLinkActive="active"><mat-icon class="nav-icon">dashboard</mat-icon> Tasks</h3>-->
+<!--            </mat-list-item>-->
+
+<!--            <mat-list-item class="nav-item" routerLink="/profile" routerLinkActive="focus">-->
+<!--                <h3 class="nav-header" routerLinkActive="active"><mat-icon class="nav-icon" >account_circle</mat-icon> User</h3>-->
+<!--            </mat-list-item>-->
+
+        </mat-nav-list>
+
+    </mat-sidenav>
+
+
+
+    <mat-sidenav-content>
+        <div class="content-container">
+            <button [class.open]="sidenav.opened"  class="nav-button" type="button" mat-button (click)="sidenav.toggle()">
+                <p class="nav-icon"><mat-icon>apps</mat-icon></p>
+            </button>
+          <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

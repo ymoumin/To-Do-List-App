@@ -1,0 +1,276 @@
+.overview {
+  margin-left: 10%;
+
+}
+
+.edit-profile{
+  width: 80px;
+  filter: hue-rotate(200deg);
+}
+
+mat-grid-tile {
+  overflow: visible;
+}
+
+.header {
+  background-color: #eee!important;
+  color: grey!important;
+  justify-content: center;
+  padding: 50px!important;
+  font-size: 6em;
+  font-weight: bolder!important;
+}
+
+.progress{
+  text-align: center;
+}
+
+.task-id {
+  margin-top: 5px;
+  font-size: 27px;
+  font-weight: bold;
+  color: #76becf;
+  text-shadow: grey 1px 0 1px;
+}
+
+.delete-message {
+  margin-top:15px;
+  font-size: 30px;
+}
+
+.add-buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.password-input{
+  padding-bottom: 20%;
+}
+
+.show{
+  margin-top: 0;
+}
+
+.delete-btn {
+  background-color: darkred;
+}
+
+.login-btn{
+  background-color: #76becf!important;
+}
+
+.leave{
+  background-color: grey;
+}
+
+.leave, .delete-btn {
+  color: white;
+  font-size: 20px;
+  margin-bottom: 20px;
+  margin-top:0;
+}
+
+.overview mat-card{
+  background-image: url("/assets/avatar.png");
+  background-size: 600px;
+  background-repeat: no-repeat;
+  background-position-y: -80px;
+  background-position-x: -50px;
+  margin-top: 20%;
+  border-top-right-radius: 100px;
+  border-top-left-radius: 100px;
+  filter: hue-rotate(-10deg);
+}
+
+/*   EYES   */
+.hit-area {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+}
+
+.hitbox {
+  width: 100px;
+  height: 100px;
+  float:left;
+}
+
+
+
+.eye {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  left: 23%;
+  top: 24%;
+  background-color: white;
+  pointer-events: none;
+  border: 3px solid #34a9df;
+}
+
+.eye + .eye {
+  left: 55%;
+}
+
+.pupil {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: grey;
+  left: 50%;
+  top: 50%;
+  margin-left: -10px;
+  margin-top: -10px;
+  transition: all .5s ease;
+}
+
+.eyelid {
+  border: 5px solid #34a9df;
+  border-radius: 100%;
+  width: 100px;
+  height: 20px;
+  background-color: #34a9df;
+  position: absolute;
+  left: 23%;
+  top: 24%;
+  pointer-events: none;
+  -webkit-animation-name: blink;
+  -webkit-animation-duration: 4.5s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-direction: alternate;
+  -webkit-animation-delay: 1s;
+  -webkit-transition: all .5s ease;
+}
+
+.eyelid + .eyelid {
+  left: 54.5%;
+}
+
+.hitbox:hover ~ .eyelid {
+  -webkit-transform: rotate(-10deg);
+}
+
+.hitbox:hover ~ .eyelid:nth-of-type(2n+1) {
+  -webkit-transform: rotate(10deg);
+}
+
+#c-3:hover ~ .eyelid {
+  -webkit-transform:  rotate(15deg);
+}
+
+#c-3:hover ~ .eyelid:nth-of-type(2n+1) {
+  -webkit-transform: rotate(-15deg);
+}
+
+#c-3:hover ~ .eye .pupil {
+  background-color: red;
+}
+
+#a-1:hover ~ .eye > .pupil {
+  -webkit-transform: rotate(60deg) translate(-30px);
+}
+
+#a-2:hover ~ .eye > .pupil {
+  -webkit-transform: rotate(80deg) translate(-30px);
+}
+
+#a-3:hover ~ .eye > .pupil {
+  -webkit-transform: rotate(90deg) translate(-30px);
+}
+
+#a-4:hover ~.eye > .pupil {
+  -webkit-transform: rotate(100deg) translate(-30px);
+}
+
+#a-5:hover ~ .eye > .pupil {
+  -webkit-transform: rotate(120deg) translate(-30px);
+}
+
+#b-1:hover ~ .eye > .pupil {
+  -webkit-transform: rotate(50deg) translate(-25px);
+}
+
+#b-2:hover ~ .eye > .pupil {
+  -webkit-transform: rotate(70deg) translate(-25px);
+}
+
+#b-3:hover ~ .eye > .pupil {
+  -webkit-transform: rotate(90deg) translate(-25px);
+}
+
+#b-4:hover ~.eye > .pupil {
+  -webkit-transform: rotate(110deg) translate(-25px);
+}
+
+#b-5:hover ~ .eye > .pupil {
+  -webkit-transform: rotate(130deg) translate(-25px);
+}
+
+#c-1:hover ~ .eye > .pupil {
+  -webkit-transform: rotate(0deg) translate(-25px);
+}
+
+#c-2:hover ~ .eye > .pupil {
+  -webkit-transform: rotate(0deg) translate(-10px);
+}
+
+#c-3:hover ~ .eye > .pupil {
+  -webkit-transform: rotate(0deg) translate(20px);
+}
+
+#c-3:hover ~ .eye:nth-of-type(2n+1) > .pupil {
+  -webkit-transform: rotate(0deg) translate(-20px);
+}
+
+#c-4:hover ~.eye > .pupil {
+  -webkit-transform: rotate(0deg) translate(10px);
+}
+
+#c-5:hover ~ .eye > .pupil {
+  -webkit-transform: rotate(0deg) translate(25px);
+}
+
+#d-1:hover ~ .eye > .pupil {
+  -webkit-transform: rotate(-50deg) translate(-25px);
+}
+
+#d-2:hover ~ .eye > .pupil {
+  -webkit-transform: rotate(-70deg) translate(-25px);
+}
+
+#d-3:hover ~ .eye > .pupil {
+  -webkit-transform: rotate(-90deg) translate(-25px);
+}
+
+#d-4:hover ~.eye > .pupil {
+  -webkit-transform: rotate(-110deg) translate(-25px);
+}
+
+#d-5:hover ~ .eye > .pupil {
+  -webkit-transform: rotate(-130deg) translate(-25px);
+}
+
+#e-1:hover ~ .eye > .pupil {
+  -webkit-transform: rotate(-40deg) translate(-30px);
+}
+
+#e-2:hover ~ .eye > .pupil {
+  -webkit-transform: rotate(-60deg) translate(-30px);
+}
+
+#e-3:hover ~ .eye > .pupil {
+  -webkit-transform: rotate(-80deg) translate(-30px);
+}
+
+#e-4:hover ~.eye > .pupil {
+  -webkit-transform: rotate(-100deg) translate(-30px);
+}
+
+#e-5:hover ~ .eye > .pupil {
+  -webkit-transform: rotate(-120deg) translate(-30px);
+}
+

@@ -1,0 +1,10 @@
+<div>
+    <div mat-dialog-title class="task-id">Deleting Task {{"#"+data.id}}</div>
+    <div mat-dialog-content>
+        <p class="delete-message">Are you sure you want to delete this task?</p>
+    </div>
+    <div mat-dialog-actions class="add-buttons">
+        <button  class="delete-btn" mat-button (click)="onConfirm()" >Delete Task</button>
+        <button class="leave" mat-button (click)="onNoClick()">Go Back</button>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="dialog">
+    <h1 mat-dialog-title>Create a Task</h1>
+    <div mat-dialog-content>
+        <h4 class="task-id">Creating Task {{"#"+latestId }}</h4>
+        <form [formGroup]="task">
+            <div>
+                <label>Status: </label>
+                <mat-radio-group formControlName="status">
+                    <mat-radio-button color="primary" value="TO DO">TO DO</mat-radio-button>
+                    <mat-radio-button color="primary" value="DOING">DOING</mat-radio-button>
+                    <mat-radio-button color="primary" value="DONE">DONE</mat-radio-button>
+                </mat-radio-group>
+            </div>
+        <div class="text-input">
+          <mat-form-field>
+            <input matInput #title formControlName="title" maxlength="10" placeholder="Title" required>
+            <mat-hint>{{title.value?.length || 0}}/10</mat-hint>
+            <mat-error> Minimum Required characters {{title.value?.length || 0}}/5 </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <textarea matInput #description formControlName="description" maxlength="20" placeholder="Description" required></textarea>
+            <mat-hint>{{description.value?.length || 0}}/20</mat-hint>
+            <mat-error> Minimum Required characters {{description.value?.length || 0}}/10 </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <textarea matInput #lonDescription formControlName="longDescription" maxlength="100" placeholder="Long Description" required></textarea>
+            <mat-hint>{{lonDescription.value?.length || 0}}/100</mat-hint>
+            <mat-error> Minimum Required characters {{lonDescription.value?.length || 0}}/20 </mat-error>
+          </mat-form-field>
+
+            <mat-form-field>
+                <mat-select placeholder="Priority" formControlName="priority" required>
+                    <mat-option value="high">High</mat-option>
+                    <mat-option value="medium">Medium</mat-option>
+                    <mat-option value="low">Low</mat-option>
+                </mat-select>
+                <mat-error> Required Selection </mat-error>
+            </mat-form-field>
+        </div>
+        </form>
+    </div>
+    <div mat-dialog-actions class="add-buttons">
+        <button type="submit" (click)="onSubmit()" [disabled]="!isValid()" class="confirm" mat-button [mat-dialog-close]="task">Add Task</button>
+        <button class="leave" mat-button (click)="onNoClick()" >Go Back</button>
+    </div>
+</div>

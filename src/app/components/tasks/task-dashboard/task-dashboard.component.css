@@ -1,0 +1,176 @@
+
+.vl {
+    border:3px solid grey;
+    min-height: 30vh;
+}
+
+
+.add {
+    font-size: 20px;
+    left: 20px;
+    background-color: grey;
+    color:white;
+}
+.list{
+    border: solid 1px grey;
+    min-height: 60px;
+}
+
+.empty-label {
+    color: grey;
+    font-size: 2em;
+    padding-top: 10px;
+    text-align: center;
+    opacity: 0.2;
+}
+
+.cdk-drag-animating {
+    transition: transform 250ms;
+}
+
+.cdk-drag-placeholder {
+    opacity: 0.2;
+}
+.content{
+  overflow: visible;
+}
+
+.paginator{
+
+}
+
+.task-time {
+  padding-top:10px;
+}
+
+.cdk-drag-handle {
+  position: relative;
+  left: 110px;
+  bottom: 80px;
+  display: flex;
+  justify-content: center;
+  color: grey;
+}
+
+.categories {
+    margin: 15px;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.category {
+    text-shadow: grey 2px 2px;
+    color:white;
+    text-align: center;
+    margin-top: 15px;
+    background: #76becf;
+    border: 2px solid grey;
+    border-radius: 4px;
+    padding: 2px 3px;
+    overflow: clip;
+}
+
+.column-category, .list {
+    border-radius: 4px;
+    min-width: 400px;
+    overflow: clip;
+}
+
+.column-category:hover .category{
+    text-shadow: grey 5px 5px;
+    border: 3px groove grey;
+}
+
+.column-category:hover .mat-mdc-card{
+    border: 3px groove grey;
+}
+
+.task-id {
+    color: #76becf;
+}
+
+.text-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.text-input > * {
+    width: 100%;
+}
+
+.text-input form {
+    margin-bottom: 20px;
+}
+
+.text-input form > * {
+    margin: 5px 0;
+}
+
+.text-input .mat-radio-button {
+    margin: 0 12px;
+}
+
+.add-buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.confirm {
+    background-color:#76becf;
+    color: white;
+    font-size: 20px;
+}
+
+.confirm:disabled {
+    background-color:aliceblue;
+    color: white;
+    font-size: 20px;
+}
+
+.leave {
+    background-color:grey;
+    color: white;
+    font-size: 20px;
+}
+
+.leave, .confirm {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+/*      mobile/small display        */
+@media (max-width: 870px) {
+    .vl {
+        display: none;
+    }
+
+    .column-category {
+        margin-bottom: 30px;
+    }
+
+    .category {
+        margin-bottom: 10px;
+    }
+
+    .column-category, .list {
+        min-width: 350px;
+    }
+
+    .add {
+        z-index: 1;
+        position: sticky;
+        width: 150px;
+        left: 60%;
+    }
+
+
+}
+
+@media(min-width: 600px){
+  .dialog {
+    width: 500px;
+  }
+}
+

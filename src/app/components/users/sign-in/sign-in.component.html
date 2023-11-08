@@ -1,0 +1,109 @@
+<div class="login-container">
+
+<!--  <mat-card class="login-eyes">-->
+<!--    <div class="hit-area">-->
+<!--      <div class="hitbox" id="a-1"></div>-->
+<!--      <div class="hitbox" id="a-2"></div>-->
+<!--      <div class="hitbox" id="a-3"></div>-->
+<!--      <div class="hitbox" id="a-4"></div>-->
+<!--      <div class="hitbox" id="a-5"></div>-->
+<!--      <div class="hitbox" id="b-1"></div>-->
+<!--      <div class="hitbox" id="b-2"></div>-->
+<!--      <div class="hitbox" id="b-3"></div>-->
+<!--      <div class="hitbox" id="b-4"></div>-->
+<!--      <div class="hitbox" id="b-5"></div>-->
+<!--      <div class="hitbox" id="c-1"></div>-->
+<!--      <div class="hitbox" id="c-2"></div>-->
+<!--      <div class="hitbox" id="c-3"></div>-->
+<!--      <div class="hitbox" id="c-4"></div>-->
+<!--      <div class="hitbox" id="c-5"></div>-->
+<!--      <div class="hitbox" id="d-1"></div>-->
+<!--      <div class="hitbox" id="d-2"></div>-->
+<!--      <div class="hitbox" id="d-3"></div>-->
+<!--      <div class="hitbox" id="d-4"></div>-->
+<!--      <div class="hitbox" id="d-5"></div>-->
+<!--      <div class="hitbox" id="e-1"></div>-->
+<!--      <div class="hitbox" id="e-2"></div>-->
+<!--      <div class="hitbox" id="e-3"></div>-->
+<!--      <div class="hitbox" id="e-4"></div>-->
+<!--      <div class="hitbox" id="e-5"></div>-->
+
+<!--      <div class="eye">-->
+<!--        <div class="pupil"></div>-->
+<!--      </div>-->
+<!--      <div class="eye">-->
+<!--        <div class="pupil"></div>-->
+<!--      </div>-->
+<!--      <div class="eyelid"></div>-->
+<!--      <div class="eyelid"></div>-->
+
+<!--      <div class="glasses"></div>-->
+<!--      <div class="glasses"></div>-->
+
+<!--      <div class="temple"></div>-->
+<!--      <div class="temple"></div>-->
+<!--      <div class="middle-temple"></div>-->
+
+<!--    </div>-->
+<!--  </mat-card>-->
+
+  <mat-card class="login">
+    <div class="login-card">
+      <mat-card-content class="login-field">
+        <form class="sign-form" (change)="retrieve()" [formGroup]="user" >
+
+          <h2 class="title">Sign In</h2>
+
+          <div>
+            <label>Username: </label>
+            <mat-form-field class="full-width-input">
+              <input matInput #userName placeholder="Username" maxlength="10" formControlName="userName" required>
+              <mat-hint>{{userName.value?.length || 0}}/10</mat-hint>
+              <mat-error> Minimum Required characters {{userName.value?.length || 0}}/5 </mat-error>
+            </mat-form-field>
+          </div>
+
+
+          <div>
+            <label>Email: </label>
+            <mat-form-field class="full-width-input">
+              <input matInput placeholder="Email" formControlName="email" required>
+              <mat-error *ngIf="!alreadyExists"> Please provide a valid email address </mat-error>
+              <mat-error *ngIf="alreadyExists"> Email Already Exists </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <label>Password: </label>
+            <mat-form-field class="password-input">
+              <input matInput [type]="hide1 ? 'password' : 'text'" #firstPassword type="password" placeholder="Password" formControlName="password" required>
+              <button class="show" mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
+                <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <mat-error> * Minimum 8 chars in total.</mat-error>
+              <mat-error> * At least two letters.</mat-error>
+              <mat-error> * At least two digits or symbols.</mat-error>
+
+            </mat-form-field>
+          </div>
+
+          <div>
+            <label>Confirm Password: </label>
+            <mat-form-field class="full-width-input">
+              <input matInput [type]="hide2 ? 'password' : 'text'" #secondPassword type="password" placeholder="Confirm Password" formControlName="confirmedPassword" required>
+              <button class="show" mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
+                <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <mat-error > Passwords do not Match </mat-error>
+            </mat-form-field>
+          </div>
+
+
+
+          <button [disabled]="!user.valid" type="submit" class="login-btn" (click)="onSubmit()" mat-raised-button color="primary">Create Account</button>
+        </form>
+      </mat-card-content>
+    </div>
+  </mat-card>
+</div>
+

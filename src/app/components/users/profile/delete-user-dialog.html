@@ -1,0 +1,10 @@
+<div>
+    <div mat-dialog-title class="task-id">Deleting User {{data.userName}}</div>
+    <div mat-dialog-content>
+        <p class="delete-message">Are you sure you want to delete your account?</p>
+    </div>
+    <div mat-dialog-actions class="add-buttons">
+        <button  class="delete-btn" mat-button (click)="onConfirm()" >Delete Account</button>
+        <button class="leave" mat-button (click)="onNoClick()">Go Back</button>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+
+<div class="login-container">
+
+  <mat-card class="login-eyes">
+    <div class="hit-area">
+      <div class="hitbox" id="a-1"></div>
+      <div class="hitbox" id="a-2"></div>
+      <div class="hitbox" id="a-3"></div>
+      <div class="hitbox" id="a-4"></div>
+      <div class="hitbox" id="a-5"></div>
+      <div class="hitbox" id="b-1"></div>
+      <div class="hitbox" id="b-2"></div>
+      <div class="hitbox" id="b-3"></div>
+      <div class="hitbox" id="b-4"></div>
+      <div class="hitbox" id="b-5"></div>
+      <div class="hitbox" id="c-1"></div>
+      <div class="hitbox" id="c-2"></div>
+      <div class="hitbox" id="c-3"></div>
+      <div class="hitbox" id="c-4"></div>
+      <div class="hitbox" id="c-5"></div>
+      <div class="hitbox" id="d-1"></div>
+      <div class="hitbox" id="d-2"></div>
+      <div class="hitbox" id="d-3"></div>
+      <div class="hitbox" id="d-4"></div>
+      <div class="hitbox" id="d-5"></div>
+      <div class="hitbox" id="e-1"></div>
+      <div class="hitbox" id="e-2"></div>
+      <div class="hitbox" id="e-3"></div>
+      <div class="hitbox" id="e-4"></div>
+      <div class="hitbox" id="e-5"></div>
+
+      <div class="eye">
+        <div class="pupil"></div>
+      </div>
+      <div class="eye">
+        <div class="pupil"></div>
+      </div>
+      <div class="eyelid"></div>
+      <div class="eyelid"></div>
+
+    </div>
+  </mat-card>
+
+  <mat-card class="login">
+    <div class="login-card">
+      <mat-card-content class="login-field">
+          <form [formGroup]="user" (change)="reset()" style="text-align: center">
+
+              <h2 class="title">Log In</h2>
+              <mat-error *ngIf="invalid" class="login-error" style="padding-bottom: 20px"> The username and password were not recognised </mat-error>
+
+              <div>
+              <mat-form-field class="full-width-input">
+                  <input matInput placeholder="Email" formControlName="email" required>
+                  <mat-error> Please provide a valid email address </mat-error>
+              </mat-form-field>
+              </div>
+            <div>
+              <mat-form-field class="full-width-input">
+                  <input matInput type="password" placeholder="Password" formControlName="password" required>
+                  <mat-error> Please provide a valid password </mat-error>
+              </mat-form-field>
+            </div>
+
+              <button type="submit" (click)="checkUser()" class="login-btn" mat-raised-button color="primary">Login</button>
+              <span>Don't have an account? <a class="sign-in" (click)="signIn()" routerLink="/sign-in">Sign In</a></span>
+          </form>
+      </mat-card-content>
+    </div>
+  </mat-card>
+  </div>
+
+

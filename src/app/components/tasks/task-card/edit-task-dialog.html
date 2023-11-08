@@ -1,0 +1,65 @@
+<div class="dialog">
+  <h1 mat-dialog-title>Updating Task</h1>
+  <div mat-dialog-content class="content">
+    <h4 class="task-id"> Task {{"#"+data.id }}</h4>
+    <form [formGroup]="task" (change)="isDiff()">
+      <div>
+        <mat-label>Status: </mat-label>
+        <mat-radio-group formControlName="status" [(ngModel)]="data.status" (change)="isDiff()">
+          <mat-radio-button color="primary" value="TO DO">TO DO</mat-radio-button>
+          <mat-radio-button color="primary" value="DOING">DOING</mat-radio-button>
+          <mat-radio-button color="primary" value="DONE">DONE</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="text-input">
+        <mat-label>Title: </mat-label>
+        <mat-form-field>
+          <input matInput [(ngModel)]="data.title" #title formControlName="title" maxlength="10" placeholder="Title" required>
+          <mat-hint>{{title.value?.length || 0}}/10</mat-hint>
+          <mat-error> Minimum Required characters {{title.value?.length || 0}}/5 </mat-error>
+        </mat-form-field>
+
+        <mat-label>Description: </mat-label>
+        <mat-form-field>
+          <textarea matInput [(ngModel)]="data.description" #description formControlName="description" maxlength="20" placeholder="Description" required></textarea>
+          <mat-hint>{{description.value?.length || 0}}/20</mat-hint>
+          <mat-error> Minimum Required characters {{description.value?.length || 0}}/10 </mat-error>
+        </mat-form-field>
+
+        <mat-label>Long Description: </mat-label>
+        <mat-form-field>
+          <textarea matInput [(ngModel)]="data.longDescription" #longDescription formControlName="longDescription" maxlength="100" placeholder="Long Description" required></textarea>
+          <mat-hint>{{longDescription.value?.length || 0}}/100</mat-hint>
+          <mat-error> Minimum Required characters {{longDescription.value?.length || 0}}/20 </mat-error>
+        </mat-form-field>
+
+        <mat-label>Priority: </mat-label>
+        <mat-form-field>
+          <mat-select placeholder="Priority" [(ngModel)]="data.priority" formControlName="priority" (selectionChange)="isDiff()"  required>
+            <mat-option value="high">High</mat-option>
+            <mat-option value="medium">Medium</mat-option>
+            <mat-option value="low">Low</mat-option>
+          </mat-select>
+          <mat-error> Required Selection </mat-error>
+        </mat-form-field>
+
+        <div class="task-time">
+        <mat-label>Created At: </mat-label>
+          <span>{{data.createdAt|date:'MMM, dd yyyy @ hh:mm a'}}</span>
+        </div>
+
+        <div class="task-time">
+        <mat-label>Last Updated At: </mat-label>
+        <span>{{data.updatedAt|date:'MMM, dd yyyy @ hh:mm a'}}</span>
+        </div>
+
+      </div>
+    </form>
+    <div mat-dialog-actions class="add-buttons">
+      <button type="submit" (click)="onSubmit()" [disabled]="!isValid()" class="confirm" mat-button [mat-dialog-close]="task">Edit Task</button>
+      <mat-error *ngIf="!disabled">No Changes!</mat-error>
+      <button class="leave" mat-button (click)="onNoClick()" >Go Back</button>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,126 @@
+
+:host {
+  display: block;
+}
+
+:host.is-first {
+  border-top: 2px solid grey;
+  padding-top: 20px;
+}
+
+:host.is-last {
+  border-bottom: 2px solid grey;
+  padding-top: 20px;
+}
+
+:host.is-even {
+  background: lightgray;
+}
+
+:host.is-odd {
+  background: lightcyan;
+}
+
+:host-context(.salmon-theme) .task-card {
+  background: lightsalmon;
+}
+
+.delete {
+  margin-top: -3%;
+  right:12%;
+  padding-top: 5px;
+  background-color: white;
+  color: whitesmoke;
+  border: 0;
+  text-shadow: 0 0 2px red;
+}
+
+
+
+
+.task-card .delete{
+  position: absolute;
+}
+
+.task-card .task-priority{
+  position: absolute;
+}
+
+.task-card {
+  overflow: clip;
+  margin: 40px;
+  text-align: center;
+  border-radius: 4px;
+  padding: 20px;
+  box-shadow: 0 1px 16px 0 rgba(0, 0, 0, .2), 0 2px 8px 0 rgba(0, 0, 0, .14), 0 4px 8px -1px rgba(0, 0, 0, .12);
+}
+
+.task-card .task-title{
+  color: grey;
+  font-size: 27px;
+  font-weight: bold;
+}
+
+.task-id {
+  margin-top: 5px;
+  font-size: 27px;
+  font-weight: bold;
+  color: #76becf;
+  text-shadow: grey 1px 0 1px;
+}
+
+.delete-message {
+  margin-top:15px;
+  font-size: 30px;
+}
+
+.add-buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.delete-btn {
+  background-color: darkred;
+}
+
+.leave{
+  background-color: grey;
+}
+
+.leave, .delete-btn {
+  color: white;
+  font-size: 20px;
+  margin-bottom: 20px;
+  margin-top:0;
+}
+
+.task-card .task-description {
+  max-width: 360px;
+  margin-top: 15px;
+  user-select: none;
+  font-size: 18px;
+  color: grey;
+  overflow: clip;
+}
+
+.task-card .task-description input {
+  font-size: 20px;
+}
+
+.task-card.beginner {
+  background: lightsalmon;
+}
+
+.task-priority{
+  color: red;
+}
+
+@media (max-width: 700px) {
+  .mobile-space {
+    height: 20px;
+  }
+}
+
+
+
+
