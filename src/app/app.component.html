@@ -25,7 +25,7 @@
 
 </mat-toolbar>
 
-<mat-nav-list style="height: 100%" [ngSwitch]="navigationIndex">
+<mat-nav-list [ngSwitch]="navigationIndex">
   <sign-in *ngSwitchCase="'/sign-in'" (loggedIn)="authorized($event)"></sign-in>
   <log-in *ngSwitchCase="'/home'" (loggedIn)="authorized($event)"></log-in>
   <side-nav *ngSwitchDefault></side-nav>
