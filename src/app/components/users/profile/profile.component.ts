@@ -8,6 +8,7 @@ import {take} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {IUser} from '../../../model/user.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'profile',
@@ -40,7 +41,8 @@ export class ProfileComponent {
   constructor(private _authenticationService : AuthenticationService,
               private _taskService: TaskService,
               protected _router: Router,
-              public dialog: MatDialog) {
+              public dialog: MatDialog,
+              private _snackBar: MatSnackBar) {
   }
 
   ngOnInit(){
@@ -86,9 +88,9 @@ export class ProfileComponent {
   }
 
   getUser(){
-    this.isUpdated = this._authenticationService.get(this.user.value.email).pipe(take(1))
+    this.isUpdated = this._authenticationService.get(this.user.value.email)
       .subscribe((result)=> {
-        this.userP = result;
+        this.userP = result[0];
       });
   }
 
@@ -105,14 +107,15 @@ export class ProfileComponent {
 
   editUser(){
     if(this.user.valid) {
-      this.updateUser = this._authenticationService.create(this.user.value).subscribe((res) => {
-        localStorage.setItem("cashedUsername",res.userName);
-        localStorage.setItem("cashedEmail",res.email);
-        localStorage.setItem("cashedPassword",res.password);
-        this.username = res.userName;
-        this.email = res.email;
-        this.password = res.password;
+      this.updateUser = this._authenticationService.update(this.userP.id,this.user.value).subscribe((res) => {
+        localStorage.setItem("cashedUsername",this.user.value.userName);
+        localStorage.setItem("cashedEmail",this.user.value.email);
+        localStorage.setItem("cashedPassword",this.user.value.password);
+        this.username = this.user.value.userName;
+        this.email = this.user.value.email;
+        this.password = this.user.value.password;
         window.location.reload();
+        this._snackBar.open(`User ${this.username} Updated`, 'Dismiss', {duration:1000});
       });
     }
   }
@@ -133,7 +136,9 @@ export class ProfileComponent {
     this.dialog.open(DeleteUserDialog, {
       disableClose:true,
       data: this.userP,
-    }).afterOpened().subscribe(()=>{console.log(this.userP)});
+    }).afterClosed().subscribe(()=>{
+      this._snackBar.open(`User ${this.username} Deleted`, 'Dismiss', {duration:1000});
+    });
   }
 
 }

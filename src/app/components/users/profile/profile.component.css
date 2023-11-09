@@ -1,12 +1,14 @@
 .overview {
   margin-left: 10%;
-
+  margin-top: 6%!important;
 }
 
 .edit-profile{
   width: 80px;
   filter: hue-rotate(200deg);
 }
+
+
 
 mat-grid-tile {
   overflow: visible;
@@ -17,6 +19,8 @@ mat-grid-tile {
   color: grey!important;
   justify-content: center;
   padding: 40px!important;
+  margin-top: -20%;
+  padding-bottom: 10px!important;
   font-size: 6em;
   font-weight: bolder!important;
 }
@@ -76,7 +80,6 @@ mat-grid-tile {
   background-repeat: no-repeat;
   background-position-y: -80px;
   background-position-x: -50px;
-  margin-top: 20%;
   border-top-right-radius: 100px;
   border-top-left-radius: 100px;
   filter: hue-rotate(-10deg);

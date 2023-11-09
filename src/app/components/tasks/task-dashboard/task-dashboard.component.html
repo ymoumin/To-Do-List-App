@@ -98,10 +98,11 @@
 
 
 </div>
-<mat-paginator class="paginator" [length]="allTasks.length"
+<mat-paginator class="paginator" 
+               [length]="longestCat"
                (page)="handlePageEvent($event)"
-               [pageSize]="6"
-               [pageSizeOptions]="[3, 6]"
+               [pageSize]="1"
+               [pageSizeOptions]="[1, 2]"
                aria-label="Select page">
 </mat-paginator>
 <!--MODAL-->

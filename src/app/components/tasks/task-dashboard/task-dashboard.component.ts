@@ -23,8 +23,9 @@ export class TaskDashboardComponent {
 
   allTasks: ITask[] = [];
 
-  limit: number = 6;
+  limit: number = 1;
   index: number = 0;
+  longestCat;
 
   //observer subscriptions
   getTasks: SubscriptionLike;
@@ -62,16 +63,16 @@ export class TaskDashboardComponent {
     this.getTasks = this._taskService.getAll()
         .subscribe(data => {
           this.allTasks = data.filter(d => d.username == this.username);
-          console.log('todo',this.todo.length);
-          console.log('inprogress',this.inProgress.length);
-          console.log('done',this.done);
           this.todo = data.filter(d => d.status == 'TO DO' && d.username == this.username);
           this.inProgress = data.filter(d => d.status == 'DOING' && d.username == this.username);
           this.done = data.filter(d => d.status == 'DONE' && d.username == this.username);
 
-          this.todo = data.filter(d => d.status == 'TO DO' && d.username == this.username).slice(this.limit == 3 ? (this.todo.length <= 1 ? 0 : -1 - this.index) : (this.todo.length <= 2 ? 0 : -2 - this.index * 2), this.limit === 3 ? this.todo.length - this.index  : this.todo.length - this.index * 2);
-          this.inProgress = data.filter(d => d.status == 'DOING' && d.username == this.username).slice(this.limit === 3 ? (this.inProgress.length <= 1 ? 0 : -1 - this.index) : (this.inProgress.length <= 2 ? 0 : -2 - this.index * 2), this.limit === 3 ? this.inProgress.length - this.index  : this.inProgress.length - this.index * 2);
-          this.done = data.filter(d => d.status == 'DONE' && d.username == this.username).slice(this.limit === 3 ? (this.done.length <= 1 ? 0 : -1 - this.index ) : (this.done.length <= 2 ? 0 : -2 - this.index * 2), this.limit === 3 ? this.done.length - this.index  : this.done.length - this.index * 2);
+          let fC = this.todo.length > this.inProgress.length ? this.todo.length : this.inProgress.length;
+          this.longestCat = fC > this.done.length ? fC : this.done.length;
+
+          this.todo = data.filter(d => d.status == 'TO DO' && d.username == this.username).slice(this.limit == 1 ? (this.todo.length <= 1 ? 0 : -1 - this.index) : (this.todo.length <= 2 ? 0 : -2 - this.index * 2), this.limit === 1 ? this.todo.length - this.index  : this.todo.length - this.index * 2);
+          this.inProgress = data.filter(d => d.status == 'DOING' && d.username == this.username).slice(this.limit === 1 ? (this.inProgress.length <= 1 ? 0 : -1 - this.index) : (this.inProgress.length <= 2 ? 0 : -2 - this.index * 2), this.limit === 1 ? this.inProgress.length - this.index  : this.inProgress.length - this.index * 2);
+          this.done = data.filter(d => d.status == 'DONE' && d.username == this.username).slice(this.limit === 1 ? (this.done.length <= 1 ? 0 : -1 - this.index ) : (this.done.length <= 2 ? 0 : -2 - this.index * 2), this.limit === 1 ? this.done.length - this.index  : this.done.length - this.index * 2);
 
         });
   }
@@ -95,7 +96,7 @@ export class TaskDashboardComponent {
       this._snackBar.open(`Task #${task.id} Updated`, 'Dismiss', {duration:1000});
 
       this.sub = this._taskService.update(task.id,'{"status":"'+ event.container.id+'"}')
-          .subscribe(() =>  { this.getAllTasks();});
+          .subscribe(() =>  { this.getAllTasks(); this.window.location.reload()});
     }
 
   }
@@ -143,7 +144,7 @@ export class AddTaskDialog {
   task = new FormGroup({
     title: new FormControl(null,Validators.minLength(5)),
     description: new FormControl(null,Validators.minLength(10)),
-    longDescription: new FormControl(null,Validators.minLength(10)),
+    longDescription: new FormControl(null,Validators.minLength(20)),
     status: new FormControl('TO DO',Validators.required),
     priority: new FormControl(null,Validators.required),
     //fetching username to create correct task data
@@ -166,7 +167,7 @@ export class AddTaskDialog {
     //get this user's latest task (+1 = current task number)
     console.log(this.data.username);
     this.getLatest = this._taskService.findLatest(`{"username":"${this.data.username}"}`)
-        .subscribe(d => this.latestId = d.length+1);
+        .subscribe(d => this.latestId = d.reduce((p,c) => p.id > c.id ? p : c).id +1);
   }
 
 
