@@ -16,7 +16,7 @@ Task Progress is also tracked below, in the "Profile" page.
 
 # Installation pre-requisites
 
-IMPORTANT: Please use Node 18 (Long Term Support version). Note that Node 18 is not yet officially supported by the Angular CLI.
+`IMPORTANT`: Install Git & Node.
 
 # Installing the Angular CLI
 
@@ -39,6 +39,20 @@ This repository is made of several separate npm modules, such as sequelizer, exp
 NPM 5 or above has the big advantage that if you use it you will be installing the exact same dependencies than I installed in my machine, so you wont run into issues caused by semantic versioning updates.
 
 This should take a couple of minutes. You can ignore the packages that need funding.
+
+# To Set up the Database
+
+`IMPORTANT`: Install PostgreSQL & Run PgAdmin 4.
+
+First Register a new Server. You can choose whichever name you would like. In the connection tab, input the following:
+
+    Host name/address: localhost
+    Username: postgres
+    Password: admin123
+
+Then, create a Database with the name: `test_database`.
+
+These values can be changed in the `db.config.json` file at the following directory: `server/config`.
 
 # To Run the Development Backend Server
 
