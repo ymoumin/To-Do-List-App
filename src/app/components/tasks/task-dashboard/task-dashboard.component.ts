@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Inject, OnInit, Output} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {TaskService} from '../../../services/tasks/task.service';
 import { ITask} from '../../../model/task.model';
 import {CdkDragDrop, transferArrayItem} from '@angular/cdk/drag-drop';
@@ -92,7 +92,7 @@ export class TaskDashboardComponent {
     console.log("came from here : "+ event.previousContainer.id);
     console.log("came to here : "+ event.container.id);
     if (event.previousContainer !== event.container) {
-      let snackBarRef = this._snackBar.open(`Task #${task.id} Updated`, 'Dismiss', {duration:1000});
+      this._snackBar.open(`Task #${task.id} Updated`, 'Dismiss', {duration:1000});
 
       this.sub = this._taskService.update(task.id,'{"status":"'+ event.container.id+'"}')
           .subscribe(() =>  { this.getAllTasks();});
@@ -186,7 +186,7 @@ export class AddTaskDialog {
   onSubmit(){
     this.createTask = this._taskService.create(this.task.value)
         .subscribe((result)=> {
-          let snackBarRef = this._snackBar.open(`Task #${result.id} Created`, 'Dismiss', {duration:1000});
+          this._snackBar.open(`Task #${result.id} Created`, 'Dismiss', {duration:1000});
           console.log("THIS TASK HAS BEEN CREATED: ",result);
         });
   }

@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Output, ViewChild} from '@angular/core';
-import {Router, Routes} from '@angular/router';
+import {Component} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'side-nav',

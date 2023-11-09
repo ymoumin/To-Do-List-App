@@ -84,7 +84,7 @@ constructor(private _authenticationService : AuthenticationService) {}
 
   onSubmit(){
     if(this.user.valid && !this.alreadyExists) {
-      this.createUser = this._authenticationService.create(this.user.value).subscribe((res) => {
+      this.createUser = this._authenticationService.create(this.user.value).subscribe(() => {
         this.loggedIn.emit(this.user.value);
       })
     }
@@ -94,11 +94,5 @@ constructor(private _authenticationService : AuthenticationService) {}
     if(this.createUser){
       this.createUser.unsubscribe();
     }
-
-   // this.getTasks.unsubscribe();
-  }
-
-  ngOnInit(){
-
   }
 }

@@ -86,7 +86,7 @@ export class DeleteTaskDialog {
 
     onConfirm(){
         this.deleteTask = this._taskService.delete(this.data.id).subscribe((result)=>{
-          let snackBarRef = this._snackBar.open(`Task #${this.data.id} Deleted`, 'Dismiss', {duration:1000});
+          this._snackBar.open(`Task #${this.data.id} Deleted`, 'Dismiss', {duration:1000});
             console.log("TASK DELETED: ", result);
             this.onNoClick();
         });
@@ -160,7 +160,7 @@ export class EditTaskDialog {
   onSubmit(){
     this.updateTask = this._taskService.update(this.data.id,this.data)
       .subscribe((result)=> {
-        let snackBarRef = this._snackBar.open(`Task #${this.data.id} Updated`, 'Dismiss', {duration:1000});
+        this._snackBar.open(`Task #${this.data.id} Updated`, 'Dismiss', {duration:1000});
         console.log("THIS TASK HAS BEEN UPDATED: ",result);
       });
   }
