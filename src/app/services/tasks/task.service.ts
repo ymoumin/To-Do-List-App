@@ -11,8 +11,6 @@ const baseUrl = 'http://localhost:9000/api/tasks';
 })
 export class TaskService {
 
-
-
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<ITask[]> {

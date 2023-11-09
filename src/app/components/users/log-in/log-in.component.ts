@@ -1,5 +1,4 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {IUser} from '../../../model/user.model';
 import {AuthenticationService} from '../../../services/users/authentication.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {SubscriptionLike} from 'rxjs';

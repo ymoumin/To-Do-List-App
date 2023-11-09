@@ -1,22 +1,15 @@
 import {
-    AfterContentInit,
-    AfterViewInit,
     Component,
-    ContentChildren,
-    ElementRef,
     EventEmitter, Inject,
     Input,
     OnInit,
     Output,
-    QueryList,
-    ViewEncapsulation
 } from '@angular/core';
 import {ITask} from '../../../model/task.model';
 import {TaskService} from '../../../services/tasks/task.service';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {AddTaskDialog} from '../task-dashboard/task-dashboard.component';
 import {SubscriptionLike} from 'rxjs';
-import {subscriptionLogsToBeFn} from 'rxjs/internal/testing/TestScheduler';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {take} from 'rxjs/operators';
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -38,7 +31,7 @@ export class TaskCardComponent implements OnInit {
 
     getTask:SubscriptionLike;
 
-    constructor(private _taskService: TaskService,public dialog: MatDialog) {}
+    constructor(public dialog: MatDialog) {}
 
     ngOnInit() {
     }

@@ -1,11 +1,7 @@
-import {Component, EventEmitter, Inject, Output} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {AuthenticationService} from '../../../services/users/authentication.service';
-import {IUser} from '../../../model/user.model';
 import {SubscriptionLike} from 'rxjs';
 import {AbstractControl, FormControl, FormGroup, ValidatorFn, Validators} from '@angular/forms';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { Router } from '@angular/router';
-import {TaskService} from '../../../services/tasks/task.service';
 
 @Component({
   selector: 'sign-in',
@@ -37,7 +33,7 @@ export class SignInComponent {
 
   alreadyExists= false;
 
-constructor(private _authenticationService : AuthenticationService,private _router: Router,private _taskService: TaskService) {}
+constructor(private _authenticationService : AuthenticationService) {}
 
   matchValidator(controlName: string, matchingControlName: string): ValidatorFn {
     return (abstractControl: AbstractControl) => {

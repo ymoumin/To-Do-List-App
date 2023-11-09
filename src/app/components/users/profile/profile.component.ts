@@ -7,9 +7,7 @@ import {SubscriptionLike} from 'rxjs';
 import {take} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
-import {AddTaskDialog} from '../../tasks/task-dashboard/task-dashboard.component';
 import {IUser} from '../../../model/user.model';
-import {EditTaskDialog} from '../../tasks/task-card/task-card.component';
 
 @Component({
   selector: 'profile',
