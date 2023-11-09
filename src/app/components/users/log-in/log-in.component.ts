@@ -12,6 +12,7 @@ export class LogInComponent implements OnInit {
 
   getUser:SubscriptionLike;
   invalid= false;
+  hide=true;
 
   user = new FormGroup({
     email: new FormControl(null, Validators.pattern('^[^\\.\\s][\\w\\-]+(\\.[\\w\\-]+)*@([\\w-]+\\.)+[\\w-]{2,}$')),

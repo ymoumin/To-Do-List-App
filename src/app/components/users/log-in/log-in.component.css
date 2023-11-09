@@ -14,6 +14,10 @@
   padding-bottom: 15%;
 }
 
+.show{
+  margin-top: 0;
+}
+
 
 .login-image{
   border-radius: 0.9rem !important;

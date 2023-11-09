@@ -57,7 +57,10 @@
               </div>
             <div>
               <mat-form-field class="full-width-input">
-                  <input matInput type="password" placeholder="Password" formControlName="password" required>
+                  <input matInput [type]="hide ? 'password' : 'text'" #firstPassword type="password" placeholder="Password" formControlName="password" required>
+                  <button class="show" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
                   <mat-error> Please provide a valid password </mat-error>
               </mat-form-field>
             </div>

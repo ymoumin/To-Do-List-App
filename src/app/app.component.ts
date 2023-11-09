@@ -3,6 +3,7 @@ import {NavigationEnd, Router} from '@angular/router';
 import {AuthenticationService} from './services/users/authentication.service';
 import {routingComponents} from './app-routing.module';
 import {IUser} from './model/user.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,7 @@ export class AppComponent implements OnInit {
   cashedAvatar:string='';
   protected routes: Router;
 
-  constructor(protected _router: Router, private _authenticationService : AuthenticationService) {
+  constructor(protected _router: Router, private _authenticationService : AuthenticationService, private _snackBar: MatSnackBar) {
     //this.pages = this._router.getCurrentNavigation().id;
     //localStorage.setItem("cashedUsername", '');
 
@@ -51,6 +52,7 @@ export class AppComponent implements OnInit {
   }
 
   logout(){
+    this._snackBar.open(`You have succesfully logged out`, 'Dismiss', {duration:1000});
     localStorage.setItem("cashedUsername", "");
     this._router.navigateByUrl(`/home`);
   }

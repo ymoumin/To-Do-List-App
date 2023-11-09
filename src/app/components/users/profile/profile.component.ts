@@ -129,6 +129,7 @@ export class ProfileComponent {
 
   logOut(){
     localStorage.setItem("cashedUsername", "");
+    this._snackBar.open(`You have succesfully logged out`, 'Dismiss', {duration:1000});
     this._router.navigateByUrl(`/home`);
   }
 
@@ -136,8 +137,6 @@ export class ProfileComponent {
     this.dialog.open(DeleteUserDialog, {
       disableClose:true,
       data: this.userP,
-    }).afterClosed().subscribe(()=>{
-      this._snackBar.open(`User ${this.username} Deleted`, 'Dismiss', {duration:1000});
     });
   }
 
@@ -155,7 +154,8 @@ export class DeleteUserDialog {
   constructor(public dialogRef: MatDialogRef<DeleteUserDialog>,
               @Inject(MAT_DIALOG_DATA) public data: IUser,
               private _authenticationService : AuthenticationService,
-              protected _router: Router) {
+              protected _router: Router,
+              private _snackBar: MatSnackBar) {
   }
 
   onConfirm(){
@@ -163,6 +163,7 @@ export class DeleteUserDialog {
       console.log('User Deleted!', res);
       localStorage.setItem("cashedUsername", "");
       this._router.navigateByUrl(`/home`);
+      this._snackBar.open(`User ${this.data.id} Deleted`, 'Dismiss', {duration:1000});
     })
   }
 
