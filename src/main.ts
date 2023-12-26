@@ -1,6 +1,6 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { Component, enableProdMode } from '@angular/core';
-import { environment } from './environment/environment';
+import { environment } from './environments/environment';
 import { AppModule } from './app/app.module';
 
 // ...
