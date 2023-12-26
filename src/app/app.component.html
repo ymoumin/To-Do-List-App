@@ -1,5 +1,6 @@
 <mat-toolbar  class="top">
-  <mat-panel-title class="top-title"> TO-DO-LIST APPLICATION</mat-panel-title>
+  <mat-panel-title class="top-title"> YETII </mat-panel-title>
+  <p  class="sub-title">Your Efficient Task Integration Interface</p>
 
 
   <button *ngIf="_router.url=='/tasks/'+cashedUsername" disableRipple="true" class="top-menu" mat-button [matMenuTriggerFor]="menu">
@@ -30,53 +31,3 @@
   <log-in *ngSwitchCase="'/home'" (loggedIn)="authorized($event)"></log-in>
   <side-nav *ngSwitchDefault></side-nav>
 </mat-nav-list>
-
-
-<!--<button [style]="'margin:10px;background-color:green;'">+ Add Task</button>-->
-
-<!--<div>-->
-
-<!--&lt;!&ndash;  <div class="tasks">&ndash;&gt;-->
-
-<!--      <div class="categories">-->
-
-<!--          <div class="column-category">-->
-<!--            <div class="mat-headline-4">To do</div>-->
-<!--                    <task-card></task-card>-->
-<!--          </div>-->
-
-<!--          <div class="vl"></div>-->
-
-<!--          <div class="column-category">-->
-<!--            <div class="mat-headline-4">Doing</div>-->
-<!--              <ng-container class="tasks" *ngFor="let task of tasks">-->
-<!--                  <task-card [task]="task" *ngIf="task.category=='INTERMEDIATE'"></task-card>-->
-<!--              </ng-container>-->
-<!--          </div>-->
-
-<!--          <div class="vl"></div>-->
-
-<!--          <div class="column-category">-->
-<!--            <div class="mat-headline-4">Done</div>-->
-<!--              <ng-container class="tasks" *ngFor="let task of tasks">-->
-<!--                  <task-card [task]="task" *ngIf="task.category=='ADVANCED'"></task-card>-->
-<!--              </ng-container>-->
-<!--          </div>-->
-
-<!--      </div>-->
-
-<!--&lt;!&ndash;    <task-card [task]="task">&ndash;&gt;-->
-
-<!--&lt;!&ndash;&lt;!&ndash;      <task-image [src]="task.iconUrl"></task-image>&ndash;&gt;&ndash;&gt;-->
-
-<!--&lt;!&ndash;    </task-card>&ndash;&gt;-->
-
-<!--&lt;!&ndash;  </div>&ndash;&gt;-->
-
-
-<!--</div>-->
-
-
-
-
-

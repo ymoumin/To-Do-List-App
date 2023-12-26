@@ -10,9 +10,14 @@
 }
 
 .top-title, .top-menu{
-
   font-size: 2em;
   text-shadow: grey 2px 2px;
+  color: white!important;
+}
+
+.sub-title{
+  font-size: 1em;
+  text-shadow: grey 1px 1px;
   color: white!important;
 }
 

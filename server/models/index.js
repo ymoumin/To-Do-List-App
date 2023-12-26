@@ -1,4 +1,3 @@
-const dbConfig = require("../util/db.config.js");
 const {Pool} = require('pg');
 
 const Sequelize = require("sequelize");
