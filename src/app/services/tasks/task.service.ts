@@ -2,11 +2,10 @@ import { Injectable, isDevMode } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {ITask} from '../../model/task.model';
-import { DEV } from 'src/environment/environment';
-import { PROD } from 'src/environment/environment.prod';
+import { environment } from 'src/environment/environment';
 
 const headers = { 'Content-Type': 'application/json'};
-const baseUrl = !isDevMode() ? PROD.apiURL : DEV.apiURL+'/api/tasks';
+const baseUrl = environment.apiURL+'/api/tasks';
 
 @Injectable({
   providedIn: 'root'
