@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {IUser} from '../../model/user.model';
 
 const headers = { 'Content-Type': 'application/json'};
-const baseUrl = 'http://localhost:9000/api/users';
+const baseUrl = process.env.SERVER_URL+'/api/users';
 
 @Injectable({
   providedIn: 'root'
