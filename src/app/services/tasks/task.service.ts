@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {ITask} from '../../model/task.model';
 
 const headers = { 'Content-Type': 'application/json'};
-const baseUrl = 'http://localhost:9000/api/tasks';
+const baseUrl = process.env.SERVER_URL+'/api/tasks';
 
 @Injectable({
   providedIn: 'root'
