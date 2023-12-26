@@ -4,7 +4,7 @@ const cors = require("cors");
 
 const app = express();
 
-app.use(cors({origin: process.env.CLIENT_URL}));
+app.use(cors({origin: true}));
 app.use(bodyParser.json());
 
 const db = require("./models");
