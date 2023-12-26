@@ -19,7 +19,7 @@ db.sequelize.sync()
 
 //default route
 app.get("/", (req, res) => {
-    res.json({ message: "Welcome to the TO-DO-LIST BACK-END application." });
+    res.json({ message: "Welcome to the YETII BACK-END application." });
 });
 
 require("./routes/task-routes")(app);
