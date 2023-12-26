@@ -31,7 +31,11 @@
     <mat-sidenav-content>
         <div class="content-container">
             <button [class.open]="sidenav.opened"  class="nav-button" type="button" mat-button (click)="sidenav.toggle()">
-                <p class="nav-icon"><mat-icon>apps</mat-icon></p>
+                <p class="nav-icon"><svg width="50" height="50" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect class="top" x="20" y="29" width="60" height="7.85106" fill="grey" />
+                  <rect class="middle" x="20" y="45.5745" width="60" height="7.85106" fill="grey" />
+                  <rect class="bottom" x="20" y="62.1489" width="60" height="7.85106" fill="grey" />
+                </svg></p>
             </button>
           <router-outlet></router-outlet>
         </div>

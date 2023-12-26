@@ -26,8 +26,8 @@ require("./routes/task-routes")(app);
 require("./routes/user-routes")(app);
 
 
-const PORT = process.env.PORT || 9000;
-const httpServer = app.listen(PORT, () => {
-    console.log('HTTP REST API Server running at http://localhost:'+PORT+'.');
-});
+// const PORT = process.env.PORT || 9000;
+// const httpServer = app.listen(PORT, () => {
+//     console.log('HTTP REST API Server running at http://localhost:'+PORT+'.');
+// });
 

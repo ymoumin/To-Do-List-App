@@ -14,6 +14,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient) {}
 
   get(email: any): Observable<IUser>{
+    console.log(email);
     return this.http.get<IUser>(`${baseUrl}/${email}`);
   }
 

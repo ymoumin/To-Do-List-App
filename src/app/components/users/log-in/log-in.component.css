@@ -3,15 +3,11 @@
   display: flex;
   justify-content: center;
   vertical-align: center;
-  /*right:10%;*/
-}
-
-.full-width-input ,.password-input{
   width: 100%;
 }
 
-.password-input{
-  padding-bottom: 15%;
+.full-width-input {
+  width: 100%;
 }
 
 .show{
@@ -26,7 +22,7 @@
 }
 
 .login-card{
-  width: 500px;
+width: 500px;
   background: hsla(0, 0%, 100%, 0.55);
   backdrop-filter: blur(30px);
   border-radius: 10px;
@@ -44,11 +40,11 @@
 .login,.login-eyes{
   flex:0 1;
   box-shadow: unset;
-  margin-top: 80px;
+  margin-top: 50px;
 }
 
 .login-eyes {
-  background-image: url("https://images-platform.99static.com/KlEcm6nL2ufed2mmvsVTqaodXGU=/53x42:967x956/500x500/top/smart/99designs-contests-attachments/64/64602/attachment_64602258");
+  background-image: url("/assets/yeti.jpeg")!important;
 }
 
 .login-field{

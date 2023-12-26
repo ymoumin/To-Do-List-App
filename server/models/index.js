@@ -1,17 +1,20 @@
-const dbConfig = require("../util/db.config");
+const dbConfig = require("../util/db.config.js");
+const {Pool} = require('pg');
 
 const Sequelize = require("sequelize");
-const sequelize = new Sequelize(dbConfig.database, dbConfig.user, dbConfig.password, {
-    host: dbConfig.host,
-    dialect: dbConfig.dialect,
-    operatorsAliases: false,
+const pool = new Pool({
+    connectionString: process.env.POSTGRES_URL + "?sslmode=require",
+})
+const sequelize = new Sequelize(
+    process.env.POSTGRES_DATABASE, 
+    process.env.POSTGRES_USER, 
+    process.env.POSTGRES_PASSWORD, 
+    {
+        host: process.env.POSTGRES_HOST,
+        dialect: 'postgres',
+        operatorsAliases: false,
 
-    pool: {
-        max: dbConfig.pool.max,
-        min: dbConfig.pool.min,
-        acquire: dbConfig.pool.acquire,
-        idle: dbConfig.pool.idle
-    }
+        pool: pool
 });
 
 const db = {};

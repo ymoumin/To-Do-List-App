@@ -37,7 +37,7 @@ exports.create = (req, res) => {
 // Find a single User with an email
 exports.findOne = (req, res) => {
   const email = req.params.email;
-
+  
   User.findOne({ where:
       {
         email: email
@@ -55,7 +55,7 @@ exports.findOne = (req, res) => {
 // Update a User by the id in the request
 exports.update = (req, res) => {
   const id = req.params.id;
-  console.log(req.body);
+  
   User.update(req.body, {
     where: { id: id }
   })

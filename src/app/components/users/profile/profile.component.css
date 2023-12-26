@@ -8,7 +8,21 @@
   filter: hue-rotate(200deg);
 }
 
+.password-input{
+  width: 100%;
+}
 
+.progess-info{
+  position: relative;
+}
+
+.password-input.ng-invalid:has(input:not(:placeholder-shown))  {
+  padding-bottom: 50px; 
+}
+
+.full-width-input{
+  width: 100%;
+}
 
 mat-grid-tile {
   overflow: visible;
@@ -47,10 +61,6 @@ mat-grid-tile {
   justify-content: space-evenly;
 }
 
-.password-input{
-  padding-bottom: 20%;
-}
-
 .show{
   margin-top: 0;
 }
@@ -61,6 +71,10 @@ mat-grid-tile {
 
 .login-btn{
   background-color: #76becf!important;
+}
+
+.login{
+  z-index: 1;
 }
 
 .leave{
@@ -75,6 +89,8 @@ mat-grid-tile {
 }
 
 .overview mat-card{
+  height: 100%;
+  width: auto;
   background-image: url("/assets/avatar.png");
   background-size: 600px;
   background-repeat: no-repeat;

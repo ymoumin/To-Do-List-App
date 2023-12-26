@@ -1,6 +1,6 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, Output} from '@angular/core';
 import {AuthenticationService} from '../../../services/users/authentication.service';
-import {SubscriptionLike} from 'rxjs';
+import {Subject, SubscriptionLike} from 'rxjs';
 import {AbstractControl, FormControl, FormGroup, ValidatorFn, Validators} from '@angular/forms';
 
 @Component({
@@ -12,6 +12,8 @@ export class SignInComponent {
 
   hide1 = true;
   hide2 = true;
+
+  show = false;
 
   @Output()
   loggedIn = new EventEmitter<any>();
@@ -26,14 +28,13 @@ export class SignInComponent {
     { validators: [this.userExists('email'),this.matchValidator('password', 'confirmedPassword')]}
   );
 
-  //user: IUser;
-
   createUser:SubscriptionLike;
   getUser:SubscriptionLike;
 
-  alreadyExists= false;
+  alreadyExists = false;
+  firstView = false;
 
-constructor(private _authenticationService : AuthenticationService) {}
+  constructor(private _authenticationService : AuthenticationService,private changeDetectorRef: ChangeDetectorRef) {}
 
   matchValidator(controlName: string, matchingControlName: string): ValidatorFn {
     return (abstractControl: AbstractControl) => {
@@ -53,6 +54,17 @@ constructor(private _authenticationService : AuthenticationService) {}
         return null;
       }
     }
+  }
+
+  test(){
+    this.show = true;
+    console.log(this.show);
+  }
+
+  ngAfterViewInit() {
+    
+    this.changeDetectorRef.detectChanges();
+    this.firstView = true;
   }
 
   userExists(controlName: string): ValidatorFn {
