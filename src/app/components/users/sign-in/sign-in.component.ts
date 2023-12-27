@@ -71,19 +71,8 @@ export class SignInComponent {
         return null;
       }
 
-      if(this.emailAlreadyExists && !this.usernameAlreadyExists){
-        const error = { existsValidator: 'Email already Exists.' };
-        control!.setErrors(error);
-        return error;
-
-      }
-      else if(!this.emailAlreadyExists && this.usernameAlreadyExists) {
-        const error = {existsValidator: 'Username already Exists.'};
-        control!.setErrors(error);
-        return error;
-      }
-      else if(this.emailAlreadyExists && this.usernameAlreadyExists) {
-        const error = {existsValidator: 'User already Exists.'};
+      if(this.emailAlreadyExists || this.usernameAlreadyExists){
+        const error = { existsValidator: 'User already Exists.' };
         control!.setErrors(error);
         return error;
       }else {
