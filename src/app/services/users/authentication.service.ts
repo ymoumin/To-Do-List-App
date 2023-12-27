@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {IUser} from '../../model/user.model';
 import { environment } from 'src/environments/environment';
 
-const headers = { 'Content-Type': 'application/json'};
+const headers = {'content-type': 'application/json'};
 const baseUrl = environment.apiURL+'/api/users';
 
 @Injectable({
