@@ -40,9 +40,9 @@ export class AppComponent implements OnInit {
         }
         //if user is logged in (cashed) don't let him see login page
         else if((this.cashedUsername!='' && this.cashedUsername) && (e.url != '/tasks/'+this.cashedUsername && e.url !='/profile')){
-          // window.addEventListener("beforeunload", function (e) {
-          //   e.returnValue = "\o/";     // Gecko, Trident, Chrome 34+
-          // });
+          window.addEventListener("beforeunload", function (e) {
+            e.returnValue = "\o/";     // Gecko, Trident, Chrome 34+
+          });
           //this.navigationIndex = '/tasks/'+this.cashedUser;
           this._router.navigateByUrl(`/tasks/${this.cashedUsername}`);
         }
