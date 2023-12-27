@@ -9,6 +9,11 @@
   justify-content: space-between;
 }
 
+.top-title:hover{
+  cursor: pointer;
+  text-shadow: grey 3px 3px;
+}
+
 .top-title, .top-menu{
   font-size: 2em;
   text-shadow: grey 2px 2px;
