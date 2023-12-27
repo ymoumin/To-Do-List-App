@@ -8,12 +8,12 @@ import {SignInComponent} from './components/users/sign-in/sign-in.component';
 import {SideNavComponent} from './components/side-nav/side-nav.component';
 
 let routes: Routes = [
-    { path: '', redirectTo:'home',pathMatch:'full' },
-    { path: 'home', component: LogInComponent },
-    { path: 'sign-in', component: SignInComponent },
-    { path: 'nav', component: SideNavComponent },
-    { path: 'tasks/:username', component: TaskDashboardComponent },
-    { path: 'profile', component: ProfileComponent }
+    { path: '', redirectTo:'/home',pathMatch:'full' },
+    { path: '/home', component: LogInComponent },
+    { path: '/sign-in', component: SignInComponent },
+    { path: '/nav', component: SideNavComponent },
+    { path: '/tasks/:username', component: TaskDashboardComponent },
+    { path: '/profile', component: ProfileComponent }
 ];
 
 @NgModule({
