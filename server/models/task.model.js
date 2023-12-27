@@ -15,7 +15,7 @@ module.exports = (sequelize, Sequelize) => {
         priority: {
             type: Sequelize.STRING
         },
-        username: {
+        email: {
             type: Sequelize.STRING
         }
     });
