@@ -67,12 +67,12 @@ export class SignInComponent {
     return (abstractControl: AbstractControl) => {
       const control = abstractControl.get(controlName);
 
-      if (control!.errors && !control!.errors?.['existsValidator']) {
+      if (control!.errors && !control!.errors?.['eExistsValidator']) {
         return null;
       }
 
       if(this.emailAlreadyExists){
-        const error = { existsValidator: 'User already Exists.' };
+        const error = { eExistsValidator: 'User already Exists.' };
         control!.setErrors(error);
         return error;
       }else {
@@ -86,12 +86,12 @@ export class SignInComponent {
     return (abstractControl: AbstractControl) => {
       const control = abstractControl.get(controlName);
 
-      if (control!.errors && !control!.errors?.['existsValidator']) {
+      if (control!.errors && !control!.errors?.['unExistsValidator']) {
         return null;
       }
 
       if(this.usernameAlreadyExists){
-        const error = { existsValidator: 'User already Exists.' };
+        const error = { unExistsValidator: 'User already Exists.' };
         control!.setErrors(error);
         return error;
       }else {
@@ -105,12 +105,16 @@ export class SignInComponent {
     this.getUser = this._authenticationService.getUser(this.user.value.userName).subscribe((res)=>{
       this.usernameAlreadyExists = res != undefined;
     })
+
+    this.getUser.unsubscribe();
   }
 
   retrieveEmail(){
     this.getUser = this._authenticationService.get(this.user.value.email).subscribe((res)=>{
       this.emailAlreadyExists = res != undefined;
     })
+    this.getUser.unsubscribe();
+
   }
 
 
