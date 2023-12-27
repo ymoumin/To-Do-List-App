@@ -29,7 +29,8 @@ export class SignInComponent {
   );
 
   createUser:SubscriptionLike;
-  getUser:SubscriptionLike;
+  getUserName:SubscriptionLike;
+  getUserEmail:SubscriptionLike;
 
   emailAlreadyExists = false;
   usernameAlreadyExists = false;
@@ -102,18 +103,15 @@ export class SignInComponent {
   }
 
   retrieveName(){
-    this.getUser = this._authenticationService.getUser(this.user.value.userName).subscribe((res)=>{
+    this.getUserName = this._authenticationService.getUser(this.user.value.userName).subscribe((res)=>{
       this.usernameAlreadyExists = res != undefined;
     })
-
-    this.getUser.unsubscribe();
   }
 
   retrieveEmail(){
-    this.getUser = this._authenticationService.get(this.user.value.email).subscribe((res)=>{
+    this.getUserEmail = this._authenticationService.get(this.user.value.email).subscribe((res)=>{
       this.emailAlreadyExists = res != undefined;
     })
-    this.getUser.unsubscribe();
 
   }
 
@@ -129,6 +127,12 @@ export class SignInComponent {
   ngOnDestroy(){
     if(this.createUser){
       this.createUser.unsubscribe();
+    }
+    if(this.getUserEmail){
+      this.getUserEmail.unsubscribe();
+    }
+    if(this.getUserName){
+      this.getUserName.unsubscribe();
     }
   }
 }
