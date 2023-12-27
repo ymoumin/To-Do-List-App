@@ -16,7 +16,7 @@ app.use(cors({
       return callback(new Error(msg), false);
     }
     return callback(null, true);
-  }
+  }, allowedHeaders: ['Content-Type']
 }));
 
 app.use(bodyParser.json());
