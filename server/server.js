@@ -4,7 +4,7 @@ const cors = require("cors");
 
 const app = express();
 
-let allowedOrigins = ['http://localhost:9000', process.env.CLIENT_URL,process.env.CLIENT_URL+'/'];
+let allowedOrigins = ['http://localhost:9000', process.env.CLIENT_URL];
 app.use(cors({
   origin: function(origin, callback){
     // allow requests with no origin
@@ -16,10 +16,7 @@ app.use(cors({
       return callback(new Error(msg), false);
     }
     return callback(null, true);
-  },
-  allowedHeaders: ['Content-Type'],
-  methods: ['GET,HEAD,PUT,PATCH,POST,DELETE'],
-  maxAge: 600
+  }
 }));
 
 app.use(bodyParser.json());
