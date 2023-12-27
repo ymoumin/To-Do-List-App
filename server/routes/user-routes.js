@@ -13,7 +13,7 @@ module.exports = app => {
   router.get("/:email", users.findOne);
 
   // Retrieve a single User with username
-  router.get("/:username", users.findUser);
+  router.get("/user/:username", users.findUser);
 
   // Update a User with id
   router.put("/:id", users.update);

@@ -21,7 +21,7 @@ export class AuthenticationService {
 
   getUser(username: any): Observable<IUser>{
     console.log(username);
-    return this.http.get<IUser>(`${baseUrl}/${username}`);
+    return this.http.get<IUser>(`${baseUrl}/user/${username}`);
   }
 
   create(data: any): Observable<IUser> {
