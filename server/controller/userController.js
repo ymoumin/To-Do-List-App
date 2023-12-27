@@ -52,7 +52,7 @@ exports.findOne = (req, res) => {
     });
 };
 
-// Find a single User with an email
+// Find a single User with username
 exports.findUser = (req, res) => {
   const username = req.params.username;
 
