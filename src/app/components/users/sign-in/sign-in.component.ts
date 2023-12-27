@@ -20,7 +20,7 @@ export class SignInComponent {
 
   //form definition & input validation
   user = new FormGroup({
-      userName: new FormControl(null,[Validators.minLength(5),Validators.required]),
+      userName: new FormControl(null,[Validators.minLength(5)]),
       email: new FormControl(null,[Validators.pattern('^[^\\.\\s][\\w\\-]+(\\.[\\w\\-]+)*@([\\w-]+\\.)+[\\w-]{2,}$'),Validators.required]),
       password: new FormControl(null,Validators.pattern('^(?=.*[a-z].*[a-z])(?=.*[!"#...\\d].*[!"#...\\d]).{8,}$')),
       confirmedPassword: new FormControl(null,Validators.required)
