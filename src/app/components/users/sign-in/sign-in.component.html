@@ -21,7 +21,7 @@
           <div>
             <label>Username: </label>
             <mat-form-field class="full-width-input">
-              <input (change)="retrieveName()" matInput #userName placeholder="Username" maxlength="10" formControlName="userName" required>
+              <input (ngModelChange)="retrieveName()" matInput #userName placeholder="Username" maxlength="10" formControlName="userName" required>
               <mat-hint>{{userName.value?.length || 0}}/10</mat-hint>
               <mat-error *ngIf="!usernameAlreadyExists"> Minimum Required characters {{userName.value?.length || 0}}/5 </mat-error>
               <mat-error *ngIf="usernameAlreadyExists"> Username Already Exists </mat-error>
@@ -31,7 +31,7 @@
           <div>
             <label>Email: </label>
             <mat-form-field class="full-width-input">
-              <input (change)="retrieveEmail()" matInput placeholder="Email" type="email" formControlName="email" required>
+              <input (ngModelChange)="retrieveEmail()" matInput placeholder="Email" type="email" formControlName="email" required>
               <mat-error *ngIf="!emailAlreadyExists"> Please provide a valid email address </mat-error>
               <mat-error *ngIf="emailAlreadyExists"> Email Already Exists </mat-error>
             </mat-form-field>

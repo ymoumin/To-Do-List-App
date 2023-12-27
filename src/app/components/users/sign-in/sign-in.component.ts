@@ -34,7 +34,6 @@ export class SignInComponent {
 
   emailAlreadyExists = false;
   usernameAlreadyExists = false;
-  firstView = false;
 
   constructor(private _authenticationService : AuthenticationService,private changeDetectorRef: ChangeDetectorRef) {}
 
@@ -59,9 +58,7 @@ export class SignInComponent {
   }
 
   ngAfterViewInit() {
-
     this.changeDetectorRef.detectChanges();
-    this.firstView = true;
   }
 
   userExists(controlName: string): ValidatorFn {
@@ -87,7 +84,6 @@ export class SignInComponent {
     this.getUserName = this._authenticationService.getUser(this.user.value.userName).subscribe((res)=>{
       this.usernameAlreadyExists = res != undefined || res != null;
     })
-    this.usernameAlreadyExists = false;
   }
 
   retrieveEmail(){
@@ -96,7 +92,6 @@ export class SignInComponent {
     })
 
   }
-
 
   onSubmit(){
     if(this.user.valid && !this.emailAlreadyExists && !this.usernameAlreadyExists) {
