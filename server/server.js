@@ -18,7 +18,8 @@ app.use(cors({
     return callback(null, true);
   },
   allowedHeaders: ['Content-Type'],
-  methods: ['GET,HEAD,PUT,PATCH,POST,DELETE']
+  methods: ['GET,HEAD,PUT,PATCH,POST,DELETE'],
+  maxAge: 600
 }));
 
 app.use(bodyParser.json());
