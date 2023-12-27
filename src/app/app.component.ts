@@ -35,16 +35,16 @@ export class AppComponent implements OnInit {
         console.log(this.cashedUsername);
 
         //initial redirect
-        if((this.cashedUsername=='' || !this.cashedUsername) && e.url!='/sign-in'){
-          this.navigationIndex = '/home';
+        if((this.cashedUsername=='' || !this.cashedUsername) && e.url!='./sign-in'){
+          this.navigationIndex = './home';
         }
         //if user is logged in (cashed) don't let him see login page
-        else if((this.cashedUsername!='' && this.cashedUsername) && (e.url != '/tasks/'+this.cashedUsername && e.url !='/profile')){
+        else if((this.cashedUsername!='' && this.cashedUsername) && (e.url != './tasks/'+this.cashedUsername && e.url !='./profile')){
           // window.addEventListener("beforeunload", function (e) {
           //   e.returnValue = "\o/";     // Gecko, Trident, Chrome 34+
           // });
           //this.navigationIndex = '/tasks/'+this.cashedUser;
-          this._router.navigateByUrl(`/tasks/${this.cashedUsername}`);
+          this._router.navigateByUrl(`./tasks/${this.cashedUsername}`);
         }
       }
 
@@ -54,7 +54,7 @@ export class AppComponent implements OnInit {
   logout(){
     this._snackBar.open(`You have succesfully logged out`, 'Dismiss', {duration:1000});
     localStorage.setItem("cashedUsername", "");
-    this._router.navigateByUrl(`/home`);
+    this._router.navigateByUrl(`./home`);
   }
 
   authorized(user:IUser){
@@ -63,7 +63,7 @@ export class AppComponent implements OnInit {
     localStorage.setItem("cashedEmail", user.email);
     localStorage.setItem("cashedPassword", user.password);
 
-    this._router.navigateByUrl(`/tasks/${user.userName}`);
+    this._router.navigateByUrl(`./tasks/${user.userName}`);
   }
 
   ngOnInit() {
