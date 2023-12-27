@@ -23,7 +23,8 @@
             <mat-form-field class="full-width-input">
               <input matInput #userName placeholder="Username" maxlength="10" formControlName="userName" required>
               <mat-hint>{{userName.value?.length || 0}}/10</mat-hint>
-              <mat-error> Minimum Required characters {{userName.value?.length || 0}}/5 </mat-error>
+              <mat-error *ngIf="!usernameAlreadyExists"> Minimum Required characters {{userName.value?.length || 0}}/5 </mat-error>
+              <mat-error *ngIf="usernameAlreadyExists"> Username Already Exists </mat-error>
             </mat-form-field>
           </div>
 
@@ -31,8 +32,8 @@
             <label>Email: </label>
             <mat-form-field class="full-width-input">
               <input (change)="retrieve()" matInput placeholder="Email" type="email" formControlName="email" required>
-              <mat-error *ngIf="!alreadyExists"> Please provide a valid email address </mat-error>
-              <mat-error *ngIf="alreadyExists"> Email Already Exists </mat-error>
+              <mat-error *ngIf="!emailAlreadyExists"> Please provide a valid email address </mat-error>
+              <mat-error *ngIf="emailAlreadyExists"> Email Already Exists </mat-error>
             </mat-form-field>
           </div>
 
@@ -65,7 +66,7 @@
       </mat-card-content>
     </div>
   </mat-card>
-  
+
 </div>
 
 
