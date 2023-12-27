@@ -37,7 +37,7 @@ exports.create = (req, res) => {
 // Find a single User with an email
 exports.findOne = (req, res) => {
   const email = req.params.email;
-  
+
   User.findOne({ where:
       {
         email: email
@@ -52,10 +52,28 @@ exports.findOne = (req, res) => {
     });
 };
 
+// Find a single User with an email
+exports.findUser = (req, res) => {
+  const username = req.params.username;
+
+  User.findOne({ where:
+      {
+        username: username
+      }})
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error retrieving User with username=" + username
+      });
+    });
+};
+
 // Update a User by the id in the request
 exports.update = (req, res) => {
   const id = req.params.id;
-  
+
   User.update(req.body, {
     where: { id: id }
   })

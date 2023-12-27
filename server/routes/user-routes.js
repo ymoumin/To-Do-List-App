@@ -1,3 +1,4 @@
+const users = require("../controller/userController");
 
 module.exports = app => {
 
@@ -10,6 +11,9 @@ module.exports = app => {
 
   // Retrieve a single User with email
   router.get("/:email", users.findOne);
+
+  // Retrieve a single User with username
+  router.get("/:username", users.findUser);
 
   // Update a User with id
   router.put("/:id", users.update);

@@ -25,13 +25,14 @@ export class SignInComponent {
       password: new FormControl(null,Validators.pattern('^(?=.*[a-z].*[a-z])(?=.*[!"#...\\d].*[!"#...\\d]).{8,}$')),
       confirmedPassword: new FormControl(null,Validators.required)
   },
-    { validators: [this.userExists('email'),this.matchValidator('password', 'confirmedPassword')]}
+    { validators: [this.userExists('email'),this.userExists('userName'),this.matchValidator('password', 'confirmedPassword')]}
   );
 
   createUser:SubscriptionLike;
   getUser:SubscriptionLike;
 
-  alreadyExists = false;
+  emailAlreadyExists = false;
+  usernameAlreadyExists = false;
   firstView = false;
 
   constructor(private _authenticationService : AuthenticationService,private changeDetectorRef: ChangeDetectorRef) {}
@@ -62,7 +63,7 @@ export class SignInComponent {
   }
 
   ngAfterViewInit() {
-    
+
     this.changeDetectorRef.detectChanges();
     this.firstView = true;
   }
@@ -75,8 +76,8 @@ export class SignInComponent {
         return null;
       }
 
-      if(this.alreadyExists){
-        const error = { existsValidator: 'Email already Exists.' };
+      if(this.emailAlreadyExists || this.usernameAlreadyExists){
+        const error = { existsValidator: 'User already Exists.' };
         control!.setErrors(error);
         return error;
       }else {
@@ -88,14 +89,17 @@ export class SignInComponent {
 
   retrieve(){
     this.getUser = this._authenticationService.get(this.user.value.email).subscribe((res)=>{
-      this.alreadyExists = res != undefined;
-      console.log(this.alreadyExists);
+      this.emailAlreadyExists = res != undefined;
+    })
+
+    this.getUser = this._authenticationService.getUser(this.user.value.userName).subscribe((res)=>{
+      this.usernameAlreadyExists = res != undefined;
     })
   }
 
 
   onSubmit(){
-    if(this.user.valid && !this.alreadyExists) {
+    if(this.user.valid && !this.emailAlreadyExists && !this.usernameAlreadyExists) {
       this.createUser = this._authenticationService.create(this.user.value).subscribe(() => {
         this.loggedIn.emit(this.user.value);
       })

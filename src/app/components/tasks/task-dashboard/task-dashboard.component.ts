@@ -148,7 +148,7 @@ export class AddTaskDialog {
     status: new FormControl('TO DO',Validators.required),
     priority: new FormControl(null,Validators.required),
     //fetching username to create correct task data
-    email: new FormControl(this.data.email),
+    username: new FormControl(this.data.username),
   });
 
     constructor(

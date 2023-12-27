@@ -19,6 +19,10 @@ export class AuthenticationService {
     return this.http.get<IUser>(`${baseUrl}/${email}`);
   }
 
+  getUser(username: any): Observable<IUser>{
+    return this.http.get<IUser>(`${baseUrl}/${username}`);
+  }
+
   create(data: any): Observable<IUser> {
     return this.http.post(baseUrl, data);
   }
