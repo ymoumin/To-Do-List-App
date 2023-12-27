@@ -1,6 +1,9 @@
 {
   "/api": {
     "target": "https://your-efficient-task-integrated-interface.onrender.com",
-    "secure": true
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
   }
 }
