@@ -104,7 +104,9 @@ export class SignInComponent {
 
   retrieveName(){
     this.getUserName = this._authenticationService.getUser(this.user.value.userName).subscribe((res)=>{
+
       this.usernameAlreadyExists = res != undefined;
+      console.log(this.usernameAlreadyExists);
     })
   }
 
