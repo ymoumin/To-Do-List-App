@@ -87,13 +87,15 @@ export class SignInComponent {
     }
   }
 
-  retrieve(){
-    this.getUser = this._authenticationService.get(this.user.value.email).subscribe((res)=>{
-      this.emailAlreadyExists = res != undefined;
-    })
-
+  retrieveName(){
     this.getUser = this._authenticationService.getUser(this.user.value.userName).subscribe((res)=>{
       this.usernameAlreadyExists = res != undefined;
+    })
+  }
+
+  retrieveEmail(){
+    this.getUser = this._authenticationService.get(this.user.value.email).subscribe((res)=>{
+      this.emailAlreadyExists = res != undefined;
     })
   }
 
