@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "https://your-efficient-task-integrated-interface.onrender.com/api",
-    "changeOrigin": true
+    "target": "https://your-efficient-task-integrated-interface.onrender.com",
+    "secure": true
   }
 }
