@@ -167,7 +167,7 @@ export class AddTaskDialog {
     //get this user's latest task (+1 = current task number)
     console.log(this.data.username);
     this.getLatest = this._taskService.findLatest(`{"username":"${this.data.username}"}`)
-        .subscribe(d => this.latestId = d.reduce((p,c) => p.id > c.id ? p : c).id +1);
+        .subscribe(d => this.latestId = d.length == 0 ? '1' : d.reduce((p,c) => p.id > c.id ? p : c).id +1);
   }
 
 
