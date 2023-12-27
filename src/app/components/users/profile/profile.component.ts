@@ -122,7 +122,7 @@ export class ProfileComponent {
         this.password = this.user.value.password;
         console.log(res);
         this._snackBar.open(`User ${this.username} Updated`, 'Dismiss', {duration:1000});
-        //window.location.reload();
+        window.location.reload();
       });
     }
   }
