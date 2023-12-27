@@ -7,8 +7,7 @@ import {DeleteTaskDialog, EditTaskDialog, TaskCardComponent} from './components/
 import {HttpClientModule} from '@angular/common/http';
 import {TaskService} from './services/tasks/task.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {RouteReuseStrategy, RouterLink, RouterModule} from '@angular/router';
-import {RouterTestingModule} from '@angular/router/testing';
+import { RouterLink} from '@angular/router';
 import {AppRoutingModule, routingComponents} from './app-routing.module';
 import { LogInComponent } from './components/users/log-in/log-in.component';
 import { SignInComponent } from './components/users/sign-in/sign-in.component';
@@ -24,20 +23,19 @@ import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {AddTaskDialog, TaskDashboardComponent} from './components/tasks/task-dashboard/task-dashboard.component';
 import {CdkDrag, CdkDropList, DragDropModule} from '@angular/cdk/drag-drop';
-import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from '@angular/material/dialog';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatOptionModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {CdkTableModule} from '@angular/cdk/table';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatExpansionModule} from '@angular/material/expansion';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-import { Component } from '@angular/core';
+import {APP_BASE_HREF} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -88,7 +86,7 @@ import { Component } from '@angular/core';
     MatChipsModule,
     MatProgressBarModule
   ],
-  providers: [TaskService,{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}}],
+  providers: [TaskService,{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}},{ provide: APP_BASE_HREF, useValue: '/' }],
   bootstrap: [AppComponent]
 })
 export class AppModule implements OnInit {
