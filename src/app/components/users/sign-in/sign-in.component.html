@@ -24,7 +24,7 @@
               <input (change)="retrieveName()" matInput #userName placeholder="Username" maxlength="10" formControlName="userName" required>
               <mat-hint>{{userName.value?.length || 0}}/10</mat-hint>
               <mat-error> Minimum Required characters {{userName.value?.length || 0}}/5 </mat-error>
-              <mat-error *ngIf="!usernameAlreadyExists"> Username Already Exists </mat-error>
+              <mat-error *ngIf="usernameAlreadyExists"> Username Already Exists </mat-error>
             </mat-form-field>
           </div>
 
