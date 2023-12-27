@@ -17,10 +17,8 @@ let routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes,{ onSameUrlNavigation: 'reload' })],
+    imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
 })
-export class AppRoutingModule {
-  cashedUser:string;
-}
-export const routingComponents = [TaskCardComponent,LogInComponent,TaskDashboardComponent]
+export class AppRoutingModule { }
+export const routingComponents = [TaskCardComponent,LogInComponent,SignInComponent,TaskDashboardComponent,ProfileComponent]
