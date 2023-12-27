@@ -58,7 +58,7 @@ exports.findUser = (req, res) => {
 
   User.findOne({ where:
       {
-        username: username
+        userName: username
       }})
     .then(data => {
       res.send(data);
