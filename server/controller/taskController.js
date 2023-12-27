@@ -21,7 +21,7 @@ exports.create = (req, res) => {
         longDescription: req.body.description,
         status: req.body.status,
         priority: req.body.priority,
-        email: req.body.email,
+        username: req.body.username,
     };
 
     // Save Task in the database

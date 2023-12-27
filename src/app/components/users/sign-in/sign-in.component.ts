@@ -20,12 +20,12 @@ export class SignInComponent {
 
   //form definition & input validation
   user = new FormGroup({
-      userName: new FormControl(null,Validators.minLength(5)),
+      userName: new FormControl(null,[Validators.minLength(5),Validators.required]),
       email: new FormControl(null,[Validators.pattern('^[^\\.\\s][\\w\\-]+(\\.[\\w\\-]+)*@([\\w-]+\\.)+[\\w-]{2,}$'),Validators.required]),
       password: new FormControl(null,Validators.pattern('^(?=.*[a-z].*[a-z])(?=.*[!"#...\\d].*[!"#...\\d]).{8,}$')),
       confirmedPassword: new FormControl(null,Validators.required)
   },
-    { validators: [this.userExists('email'),this.userExists('userName'),this.matchValidator('password', 'confirmedPassword')]}
+    { validators: [this.userExists('userName'),this.userExists('email'),this.matchValidator('password', 'confirmedPassword')]}
   );
 
   createUser:SubscriptionLike;
