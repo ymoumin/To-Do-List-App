@@ -5,7 +5,7 @@ import {IUser} from '../../model/user.model';
 import { environment } from 'src/environments/environment';
 
 const headers = { 'Content-Type': 'application/json'};
-const baseUrl = '/api/users';
+const baseUrl = environment.apiURL+'/api/users';
 
 @Injectable({
   providedIn: 'root'
