@@ -4,7 +4,7 @@ const cors = require("cors");
 
 const app = express();
 
-let allowedOrigins = ['http://localhost:9000', process.env.CLIENT_URL];
+let allowedOrigins = ['http://localhost:9000', process.env.CLIENT_URL,process.env.CLIENT_URL+'/'];
 app.use(cors({
   origin: function(origin, callback){
     // allow requests with no origin
