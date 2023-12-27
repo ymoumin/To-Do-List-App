@@ -25,7 +25,7 @@ export class SignInComponent {
       password: new FormControl(null,Validators.pattern('^(?=.*[a-z].*[a-z])(?=.*[!"#...\\d].*[!"#...\\d]).{8,}$')),
       confirmedPassword: new FormControl(null,Validators.required)
   },
-    { validators: [this.usernameExists('userName'),this.emailExists('email'),this.matchValidator('password', 'confirmedPassword')]}
+    { validators: [this.userExists('userName'),this.userExists('email'),this.matchValidator('password', 'confirmedPassword')]}
   );
 
   createUser:SubscriptionLike;
@@ -64,35 +64,16 @@ export class SignInComponent {
     this.firstView = true;
   }
 
-  emailExists(controlName: string): ValidatorFn {
+  userExists(controlName: string): ValidatorFn {
     return (abstractControl: AbstractControl) => {
       const control = abstractControl.get(controlName);
 
-      if (control!.errors && !control!.errors?.['eExistsValidator']) {
+      if (control!.errors && !control!.errors?.['existsValidator']) {
         return null;
       }
 
-      if(this.emailAlreadyExists){
-        const error = { eExistsValidator: 'User already Exists.' };
-        control!.setErrors(error);
-        return error;
-      }else {
-        control!.setErrors(null);
-        return null;
-      }
-    }
-  }
-
-  usernameExists(controlName: string): ValidatorFn {
-    return (abstractControl: AbstractControl) => {
-      const control = abstractControl.get(controlName);
-
-      if (control!.errors && !control!.errors?.['unExistsValidator']) {
-        return null;
-      }
-
-      if(this.usernameAlreadyExists){
-        const error = { unExistsValidator: 'User already Exists.' };
+      if(this.usernameAlreadyExists || this.emailAlreadyExists){
+        const error = { existsValidator: 'User already Exists.' };
         control!.setErrors(error);
         return error;
       }else {
