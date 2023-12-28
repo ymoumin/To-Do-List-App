@@ -5,7 +5,7 @@ module.exports = app => {
 
   const router = require("express").Router();
 
-    router.options('/', cors())
+    router.options("/", cors());
 
     // Create a new Task
     router.post("/", tasks.create);
@@ -19,13 +19,14 @@ module.exports = app => {
     // Retrieve a single Task with id
     router.get("/:id", tasks.findOne);
 
+    router.options("/:id", cors());
     // Update a Task with id
     router.put("/:id", tasks.update);
 
     // Delete a Task with id
     router.delete("/:id", tasks.delete);
 
-    // Create a new Task
+    // delete all Tasks
     router.delete("/", tasks.deleteAll);
 
     app.use('/api/tasks', router);
