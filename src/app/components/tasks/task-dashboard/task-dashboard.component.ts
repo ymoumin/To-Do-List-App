@@ -124,6 +124,7 @@ export class TaskDashboardComponent {
       disableClose:true
       }).afterClosed().subscribe(()=>{
         this.getAllTasks();
+        window.location.reload();
       });
   }
   protected readonly window = window;
@@ -183,7 +184,7 @@ export class AddTaskDialog {
           this._snackBar.open(`Task #${result.id} Created`, 'Dismiss', {duration:1000});
           console.log("THIS TASK HAS BEEN CREATED: ",result);
         });
-    window.location.reload();
+
   }
 
   onNoClick(): void {
