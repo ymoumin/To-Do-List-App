@@ -66,6 +66,9 @@ export class DeleteTaskDialog {
 
     deleteTask: SubscriptionLike;
 
+  @Output()
+  refreshTasks = new EventEmitter<ITask[]>();
+
     constructor(
         public dialogRef: MatDialogRef<AddTaskDialog>,
         @Inject(MAT_DIALOG_DATA) public data: any,
@@ -87,6 +90,7 @@ export class DeleteTaskDialog {
         this.deleteTask = this._taskService.delete(this.data.id).subscribe((result)=>{
           this._snackBar.open(`Task #${this.data.id} Deleted`, 'Dismiss', {duration:1000});
             console.log("TASK DELETED: ", result);
+            this.refreshTasks.emit();
             this.onNoClick();
         });
     }
@@ -102,6 +106,9 @@ export class DeleteTaskDialog {
   styleUrls: ['../task-dashboard/task-dashboard.component.css']
 })
 export class EditTaskDialog {
+
+  @Output()
+  refreshTasks = new EventEmitter<ITask[]>();
 
   //form definition & input validation
   task = new FormGroup({
@@ -158,6 +165,7 @@ export class EditTaskDialog {
       .subscribe((result)=> {
         this._snackBar.open(`Task #${this.data.id} Updated`, 'Dismiss', {duration:1000});
         console.log("THIS TASK HAS BEEN UPDATED: ",result);
+        this.refreshTasks.emit();
       });
   }
 
