@@ -1,4 +1,5 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const app = express();
@@ -21,7 +22,7 @@ app.use(cors({
 
 app.options('*', cors()) // enable pre-flight
 
-//app.use(bodyParser.json());
+app.use(bodyParser.json());
 
 const db = require("./models");
 
