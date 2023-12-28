@@ -13,7 +13,7 @@ module.exports = app => {
     // Retrieve all Tasks
     router.get("/", tasks.findAll);
 
-    router.get("/", tasks.findForUser);
+    router.put("/", tasks.findForUser);
 
     // Retrieve all user's latest Task ID
     router.put("/latest", tasks.findLatest);
