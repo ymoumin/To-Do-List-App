@@ -93,7 +93,7 @@ export class TaskDashboardComponent {
       this._snackBar.open(`Task #${task.id} Updated`, 'Dismiss', {duration:1000});
 
       this.sub = this._taskService.update(task.id,'{"status":"'+ event.container.id+'"}')
-          .subscribe(() =>  { this.getAllTasks(); });
+          .subscribe(() =>  { this.getAllTasks(); this.window.location.reload()});
     }
 
   }
