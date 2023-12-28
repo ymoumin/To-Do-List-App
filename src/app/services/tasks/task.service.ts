@@ -46,7 +46,7 @@ export class TaskService {
     return this.http.put<any>(`${baseUrl}/latest`, username, {headers});
   }
 
-  findForUser(username: any): Observable<any> {
+  findForUser(username: any): Observable<ITask[]> {
     return this.http.put<any>(baseUrl, username, {headers});
   }
 

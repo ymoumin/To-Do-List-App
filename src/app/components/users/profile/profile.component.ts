@@ -38,6 +38,13 @@ export class ProfileComponent {
   getTasks: SubscriptionLike;
   isUpdated: SubscriptionLike;
   updateUser: SubscriptionLike;
+  updateTasks: SubscriptionLike;
+
+  getUserName:SubscriptionLike;
+  getUserEmail:SubscriptionLike;
+
+  emailAlreadyExists = false;
+  usernameAlreadyExists = false;
 
   constructor(private _authenticationService : AuthenticationService,
               private _taskService: TaskService,
@@ -62,7 +69,7 @@ export class ProfileComponent {
       password: new FormControl(this.password,Validators.pattern('^(?=.*[a-z].*[a-z])(?=.*[!"#...\\d].*[!"#...\\d]).{8,}$')),
       confirmedPassword: new FormControl(null,Validators.required)
     },
-    { validators: [this.matchValidator('password', 'confirmedPassword')]}
+    { validators: [this.userExists('email'),this.userExists('userName'),this.matchValidator('password', 'confirmedPassword')]}
   );
 
   matchValidator(controlName: string, matchingControlName: string): ValidatorFn {
@@ -83,6 +90,38 @@ export class ProfileComponent {
         return null;
       }
     }
+  }
+
+  userExists(controlName: string): ValidatorFn {
+    return (abstractControl: AbstractControl) => {
+      const control = abstractControl.get(controlName);
+
+      if (control!.errors && !control!.errors?.['existsValidator']) {
+        return null;
+      }
+
+      if(this.usernameAlreadyExists || this.emailAlreadyExists){
+        const error = { existsValidator: 'User already Exists.' };
+        control!.setErrors(error);
+        return error;
+      }else {
+        control!.setErrors(null);
+        return null;
+      }
+    }
+  }
+
+  retrieveName(){
+    this.getUserName = this._authenticationService.getUser(this.user.value.userName).subscribe((res)=>{
+      this.usernameAlreadyExists = res != undefined || res != null;
+    })
+  }
+
+  retrieveEmail(){
+    this.getUserEmail = this._authenticationService.get(this.user.value.email).subscribe((res)=>{
+      this.emailAlreadyExists = res != undefined || res != null;
+    })
+
   }
 
   enableEdit(){
@@ -117,13 +156,25 @@ export class ProfileComponent {
         localStorage.setItem("cashedUsername",this.user.value.userName);
         localStorage.setItem("cashedEmail",this.user.value.email);
         localStorage.setItem("cashedPassword",this.user.value.password);
+
+        this.updateTasks = this._taskService.findForUser(this.username).subscribe((userTasks)=>
+        {userTasks.forEach((task)=> {
+          this._taskService.update(task.id,{
+          userName: this.user.value.userName,
+          email: this.user.value.email,
+          password: this.user.value.password
+        })})})
+
         this.username = this.user.value.userName;
         this.email = this.user.value.email;
         this.password = this.user.value.password;
         console.log(res);
+
         this._snackBar.open(`User ${this.username} Updated`, 'Dismiss', {duration:1000});
         window.location.reload();
       });
+
+
     }
   }
 
