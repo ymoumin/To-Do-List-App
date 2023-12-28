@@ -4,11 +4,9 @@ import {Observable} from 'rxjs';
 import {IUser} from '../../model/user.model';
 import { environment } from 'src/environments/environment';
 
-const headers =  {
-  'Access-Control-Allow-Headers': 'X-Requested-With,content-type'
-}
+const headers = {'content-type': 'application/json'};
 
-const baseUrl = environment.apiURL+'api/users';
+const baseUrl = environment.apiURL+'/api/users';
 
 @Injectable({
   providedIn: 'root'
