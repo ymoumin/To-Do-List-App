@@ -183,7 +183,7 @@ export class AddTaskDialog {
           this._snackBar.open(`Task #${result.id} Created`, 'Dismiss', {duration:1000});
           console.log("THIS TASK HAS BEEN CREATED: ",result);
         });
-    this.dialogRef.close();
+    window.location.reload();
   }
 
   onNoClick(): void {
@@ -193,6 +193,6 @@ export class AddTaskDialog {
       this.dialogRef.close();
     }
   }
-
+  protected readonly window = window;
 }
 
