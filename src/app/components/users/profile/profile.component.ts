@@ -157,6 +157,19 @@ export class ProfileComponent {
         localStorage.setItem("cashedEmail",this.user.value.email);
         localStorage.setItem("cashedPassword",this.user.value.password);
 
+        this.updateTasks = this._taskService.findForUser({userName:this.username}).subscribe((userTasks)=>
+          {
+            userTasks.forEach((task)=> {
+            this._taskService.update(task.id,
+              {
+                userName: this.username,
+                email: this.email,
+                password: this.password
+              }).subscribe((res)=>{
+                console.log(res)})
+            })
+          });
+
         this.username = this.user.value.userName;
         this.email = this.user.value.email;
         this.password = this.user.value.password;
@@ -164,19 +177,6 @@ export class ProfileComponent {
 
         this._snackBar.open(`User ${this.username} Updated`, 'Dismiss', {duration:1000});
         //window.location.reload();
-      });
-
-      this.updateTasks = this._taskService.findForUser({userName:this.username}).subscribe((userTasks)=>
-      {
-        userTasks.forEach((task)=> {
-          this._taskService.update(task.id,
-            {
-              userName: this.user.value.userName,
-              email: this.user.value.email,
-              password: this.user.value.password
-            }).subscribe((res)=>{
-            console.log(res)})
-        })
       });
 
 
