@@ -5,9 +5,9 @@ module.exports = app => {
 
   const router = require("express").Router();
 
-  router.options('/score', cors())
+    router.options('/', cors())
 
-  // Create a new Task
+    // Create a new Task
     router.post("/", tasks.create);
 
     // Retrieve all Tasks
