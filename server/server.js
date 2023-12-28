@@ -1,5 +1,4 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const app = express();
@@ -15,13 +14,14 @@ app.use(cors({
         'allow access from the specified Origin.';
       return callback(new Error(msg), false);
     }
+    console.log("CORS WORKS");
     return callback(null, true);
   }
 }));
 
-app.options('*', cors());
+app.options('*', cors()) // enable pre-flight
 
-app.use(bodyParser.json());
+//app.use(bodyParser.json());
 
 const db = require("./models");
 
