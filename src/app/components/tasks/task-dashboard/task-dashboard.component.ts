@@ -175,9 +175,6 @@ export class AddTaskDialog {
     if(this.getLatest){
       this.getLatest.unsubscribe();
     }
-    if(this.createTask){
-      this.createTask.unsubscribe();
-    }
   }
 
   isValid(){
