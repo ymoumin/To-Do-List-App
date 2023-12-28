@@ -39,6 +39,10 @@ app.get("/", (req, res) => {
     res.json({ message: "Welcome to the YETII BACK-END application." });
 });
 
+app.post('/tasks', cors(), function (req, res, next) {
+  res.json({msg: 'This is CORS-enabled for POST.'})
+})
+
 require("./routes/task-routes")(app);
 require("./routes/user-routes")(app);
 
