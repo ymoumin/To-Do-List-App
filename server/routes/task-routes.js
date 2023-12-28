@@ -1,8 +1,11 @@
+const cors = require("cors");
 
 module.exports = app => {
   const tasks = require("../controller/taskController");
 
   const router = require("express").Router();
+
+  router.options('/score', cors())
 
   // Create a new Task
     router.post("/", tasks.create);
