@@ -125,7 +125,7 @@ export class TaskDashboardComponent {
       })
         .afterClosed().subscribe(()=>{this.getAllTasks();});
   }
-
+  protected readonly ondragenter = ondragenter;
 }
 
 @Component({
