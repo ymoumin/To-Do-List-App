@@ -8,7 +8,7 @@ const headers =  {
   'Access-Control-Allow-Headers': 'X-Requested-With,content-type'
 }
 
-const baseUrl = 'api/users';
+const baseUrl = environment.apiURL+'api/users';
 
 @Injectable({
   providedIn: 'root'
