@@ -1,21 +1,12 @@
-const cors = require("cors");
 
 module.exports = app => {
-  const tasks = require("../controller/taskController");
+    const tasks = require("../controller/taskController");
 
-  const headers = (req, res, next) => {
-    const origin = (req.headers.origin === 'http://localhost:9000') ? 'http://localhost:9000' : process.env.CLIENT_URL
-    res.setHeader('Access-Control-Allow-Origin', origin)
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE')
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type')
-    res.setHeader('Access-Control-Allow-Credentials', true)
-    next()
-  }
 
   const router = require("express").Router();
 
-    // Create a new Task
-    router.post("/", cors(), headers, tasks.create);
+  // Create a new Task
+    router.post("/", tasks.create);
 
     // Retrieve all Tasks
     router.get("/", tasks.findAll);
