@@ -157,7 +157,7 @@ export class ProfileComponent {
         localStorage.setItem("cashedEmail",this.user.value.email);
         localStorage.setItem("cashedPassword",this.user.value.password);
 
-        this.updateTasks = this._taskService.findForUser(this.username).subscribe((userTasks)=>
+        this.updateTasks = this._taskService.findForUser({userName:this.username}).subscribe((userTasks)=>
           {
             userTasks.forEach((task)=> {
             this._taskService.update(task.id,
