@@ -78,9 +78,6 @@ export class TaskDashboardComponent {
   }
 
   ngOnDestroy(){
-    if(this.getTasks){
-      this.getTasks.unsubscribe();
-    }
     if(this.dialogRef){
       this.dialogRef.unsubscribe();
     }
@@ -128,7 +125,7 @@ export class TaskDashboardComponent {
       })
         .afterClosed().subscribe(()=>{this.getAllTasks();});
   }
-
+  protected readonly window = window;
 }
 
 @Component({
