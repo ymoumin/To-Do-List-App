@@ -4,7 +4,10 @@ import {Observable} from 'rxjs';
 import {IUser} from '../../model/user.model';
 import { environment } from 'src/environments/environment';
 
-const headers = {'content-type': 'application/json'};
+const headers =  {
+  'Access-Control-Allow-Headers': 'X-Requested-With,content-type'
+}
+
 const baseUrl = environment.apiURL+'/api/users';
 
 @Injectable({
@@ -25,7 +28,7 @@ export class AuthenticationService {
   }
 
   create(data: any): Observable<any> {
-    return this.http.post(baseUrl, data);
+    return this.http.post(baseUrl, data,{headers});
   }
 
   update(id: any, data: any): Observable<any> {

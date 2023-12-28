@@ -1,7 +1,6 @@
 
 module.exports = app => {
-    const tasks = require("../controller/taskController");
-
+  const tasks = require("../controller/taskController");
 
   const router = require("express").Router();
 
