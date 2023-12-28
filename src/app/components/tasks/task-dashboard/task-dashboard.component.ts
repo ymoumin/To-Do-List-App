@@ -78,9 +78,6 @@ export class TaskDashboardComponent {
   }
 
   ngOnDestroy(){
-    if(this.getTasks){
-      this.getTasks.unsubscribe();
-    }
     if(this.dialogRef){
       this.dialogRef.unsubscribe();
     }
@@ -96,7 +93,7 @@ export class TaskDashboardComponent {
       this._snackBar.open(`Task #${task.id} Updated`, 'Dismiss', {duration:1000});
 
       this.sub = this._taskService.update(task.id,'{"status":"'+ event.container.id+'"}')
-          .subscribe(() =>  { this.getAllTasks(); this.window.location.reload()});
+          .subscribe(() =>  { this.getAllTasks() });
     }
 
   }
@@ -129,8 +126,6 @@ export class TaskDashboardComponent {
         .afterClosed().subscribe(()=>{this.getAllTasks();});
   }
 
-  protected readonly window = window;
-  protected readonly ondragenter = ondragenter;
 }
 
 @Component({
@@ -186,6 +181,7 @@ export class AddTaskDialog {
         .subscribe((result)=> {
           this._snackBar.open(`Task #${result.id} Created`, 'Dismiss', {duration:1000});
           console.log("THIS TASK HAS BEEN CREATED: ",result);
+          this.window.location.reload();
         });
   }
 
@@ -196,6 +192,6 @@ export class AddTaskDialog {
       this.dialogRef.close();
     }
   }
-
+  protected readonly window = window;
 }
 

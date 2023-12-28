@@ -46,12 +46,11 @@ export class TaskCardComponent implements OnInit {
     }
 
     updateTask() {
-
       this.dialog.open(EditTaskDialog, {
         disableClose:true,
         data: this.task,
       }).afterClosed().subscribe(()=>{
-        setTimeout(()=>{this.refreshTasks.emit()},1000);
+        this.refreshTasks.emit();
       });
     }
 
