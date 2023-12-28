@@ -78,6 +78,9 @@ export class TaskDashboardComponent {
   }
 
   ngOnDestroy(){
+    if(this.getTasks){
+      this.getTasks.unsubscribe();
+    }
     if(this.dialogRef){
       this.dialogRef.unsubscribe();
     }
