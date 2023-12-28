@@ -125,7 +125,7 @@ export class TaskDashboardComponent {
       })
         .afterClosed().subscribe(()=>{this.getAllTasks();});
   }
-  protected readonly ondragenter = ondragenter;
+
 }
 
 @Component({
@@ -181,7 +181,6 @@ export class AddTaskDialog {
         .subscribe((result)=> {
           this._snackBar.open(`Task #${result.id} Created`, 'Dismiss', {duration:1000});
           console.log("THIS TASK HAS BEEN CREATED: ",result);
-          this.window.location.reload();
         });
   }
 
@@ -192,6 +191,6 @@ export class AddTaskDialog {
       this.dialogRef.close();
     }
   }
-  protected readonly window = window;
+
 }
 
