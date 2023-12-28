@@ -167,6 +167,7 @@ export class EditTaskDialog {
         console.log("THIS TASK HAS BEEN UPDATED: ",result);
         this.refreshTasks.emit();
       });
+    this.dialogRef.close();
   }
 
 

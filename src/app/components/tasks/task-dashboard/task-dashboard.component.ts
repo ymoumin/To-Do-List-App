@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, EventEmitter, Inject, Output} from '@angular/core';
 import {TaskService} from '../../../services/tasks/task.service';
 import { ITask} from '../../../model/task.model';
 import {CdkDragDrop, transferArrayItem} from '@angular/cdk/drag-drop';
@@ -93,7 +93,7 @@ export class TaskDashboardComponent {
       this._snackBar.open(`Task #${task.id} Updated`, 'Dismiss', {duration:1000});
 
       this.sub = this._taskService.update(task.id,'{"status":"'+ event.container.id+'"}')
-          .subscribe(() =>  { this.getAllTasks() });
+          .subscribe(() =>  { this.getAllTasks(); });
     }
 
   }
@@ -122,8 +122,9 @@ export class TaskDashboardComponent {
     this.dialogRef = this.dialog.open(AddTaskDialog, {
       data: {username: this.username},
       disableClose:true
-      })
-        .afterClosed().subscribe(()=>{this.getAllTasks();});
+      }).afterClosed().subscribe(()=>{
+        this.getAllTasks();
+      });
   }
   protected readonly window = window;
 }
@@ -182,6 +183,7 @@ export class AddTaskDialog {
           this._snackBar.open(`Task #${result.id} Created`, 'Dismiss', {duration:1000});
           console.log("THIS TASK HAS BEEN CREATED: ",result);
         });
+    this.dialogRef.close();
   }
 
   onNoClick(): void {
