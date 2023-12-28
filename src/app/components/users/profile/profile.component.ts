@@ -153,22 +153,6 @@ export class ProfileComponent {
         email: this.user.value.email,
         password: this.user.value.password
       }).subscribe((res) => {
-        localStorage.setItem("cashedUsername",this.user.value.userName);
-        localStorage.setItem("cashedEmail",this.user.value.email);
-        localStorage.setItem("cashedPassword",this.user.value.password);
-
-        this.updateTasks = this._taskService.findForUser({userName:this.username}).subscribe((userTasks)=>
-          {
-            userTasks.forEach((task)=> {
-            this._taskService.update(task.id,
-              {
-                userName: this.username,
-                email: this.email,
-                password: this.password
-              }).subscribe((res)=>{
-                console.log(res)})
-            })
-          });
 
         this.username = this.user.value.userName;
         this.email = this.user.value.email;
@@ -179,7 +163,22 @@ export class ProfileComponent {
         //window.location.reload();
       });
 
+      this.updateTasks = this._taskService.findForUser({userName:this.username}).subscribe((userTasks)=>
+      {
+        userTasks.forEach((task)=> {
+          this._taskService.update(task.id,
+            {
+              userName: localStorage.getItem("cashedUsername"),
+              email: localStorage.getItem("cashedEmail"),
+              password: localStorage.getItem("cashedPassword")
+            }).subscribe((res)=>{
+            console.log(res)})
+        })
+      });
 
+      localStorage.setItem("cashedUsername",this.user.value.userName);
+      localStorage.setItem("cashedEmail",this.user.value.email);
+      localStorage.setItem("cashedPassword",this.user.value.password);
     }
   }
 

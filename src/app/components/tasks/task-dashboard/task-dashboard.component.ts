@@ -183,6 +183,7 @@ export class AddTaskDialog {
         .subscribe((result)=> {
           this._snackBar.open(`Task #${result.id} Created`, 'Dismiss', {duration:1000});
           console.log("THIS TASK HAS BEEN CREATED: ",result);
+          window.location.reload();
         });
 
   }
