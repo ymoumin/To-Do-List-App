@@ -164,15 +164,15 @@ export class ProfileComponent {
         //window.location.reload();
       });
 
-      this.updateTasks = this._taskService.findForUser({userName:this.username}).subscribe((userTasks)=>
+      this.updateTasks = this._taskService.findForUser({userName:this.userP.userName}).subscribe((userTasks)=>
       {
         userTasks.forEach((task)=> {
           console.log(task);
           this._taskService.update(task.id,
             {
-              userName: localStorage.getItem("cashedUsername"),
-              email: localStorage.getItem("cashedEmail"),
-              password: localStorage.getItem("cashedPassword")
+              userName: this.userP.userName,
+              email: this.userP.email,
+              password: this.userP.password
             }).subscribe((res)=>{
             console.log(res)})
         })

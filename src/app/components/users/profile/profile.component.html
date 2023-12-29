@@ -6,7 +6,7 @@
   <mat-grid-list class="content" cols="2" rowHeight="2:1.5">
 
     <mat-grid-tile class="overview">
-      
+
       <mat-card>
         <mat-grid-tile-header class="mat-headline-3 header">
           Profile
@@ -74,6 +74,7 @@
                   <input [readonly]="!edit" matInput #userName [(ngModel)]="username" placeholder="Username" maxlength="10" formControlName="userName" required>
                   <mat-hint *ngIf="disabled">{{userName.value?.length || 0}}/10</mat-hint>
                   <mat-error *ngIf="edit"> Minimum Required characters {{userName.value?.length || 0}}/5 </mat-error>
+                  <mat-error *ngIf="usernameAlreadyExists"> Username already taken</mat-error>
                 </mat-form-field>
               </div>
 
@@ -83,6 +84,7 @@
                 <mat-form-field class="full-width-input">
                   <input [readonly]="!edit" matInput [(ngModel)]="email" placeholder="Email" formControlName="email" required>
                   <mat-error *ngIf="edit"> Please provide a valid email address </mat-error>
+                  <mat-error *ngIf="emailAlreadyExists"> Email already taken</mat-error>
                 </mat-form-field>
               </div>
 
