@@ -160,10 +160,13 @@ export class ProfileComponent {
         this.password = this.user.value.password;
         console.log(res);
 
+        console.log(">>>>>>>>>>>>>",this.userP.userName);
+        console.log(">>>>>>>>>>>>>",this.username);
+
         this.updateTasks = this._taskService.findForUser({userName:this.userP.userName}).subscribe((userTasks)=>
         {
           userTasks.forEach((task)=> {
-            console.log(this.userP);
+
             this._taskService.update(task.id,
               {
                 username:this.username
