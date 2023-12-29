@@ -73,7 +73,6 @@ export class TaskDashboardComponent {
           this.todo = data.filter(d => d.status == 'TO DO' && d.username == this.username).slice(this.limit == 1 ? (this.todo.length <= 1 ? 0 : -1 - this.index) : (this.todo.length <= 2 ? 0 : -2 - this.index * 2), this.limit === 1 ? this.todo.length - this.index  : this.todo.length - this.index * 2);
           this.inProgress = data.filter(d => d.status == 'DOING' && d.username == this.username).slice(this.limit === 1 ? (this.inProgress.length <= 1 ? 0 : -1 - this.index) : (this.inProgress.length <= 2 ? 0 : -2 - this.index * 2), this.limit === 1 ? this.inProgress.length - this.index  : this.inProgress.length - this.index * 2);
           this.done = data.filter(d => d.status == 'DONE' && d.username == this.username).slice(this.limit === 1 ? (this.done.length <= 1 ? 0 : -1 - this.index ) : (this.done.length <= 2 ? 0 : -2 - this.index * 2), this.limit === 1 ? this.done.length - this.index  : this.done.length - this.index * 2);
-
         });
   }
 
@@ -125,7 +124,6 @@ export class TaskDashboardComponent {
       }).beforeClosed().subscribe(()=>{
         this.getAllTasks();
       })
-    window.location.reload();
   }
   protected readonly window = window;
 }
@@ -172,6 +170,7 @@ export class AddTaskDialog {
     if(this.getLatest){
       this.getLatest.unsubscribe();
     }
+    window.location.reload();
   }
 
   isValid(){
