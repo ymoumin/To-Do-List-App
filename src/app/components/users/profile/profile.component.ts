@@ -147,6 +147,7 @@ export class ProfileComponent {
   }
 
   editUser(){
+    console.log(this.user.valid);
     if(this.user.valid) {
       this.updateUser = this._authenticationService.update(this.userP.id,{
         userName: this.user.value.userName,
@@ -166,6 +167,7 @@ export class ProfileComponent {
       this.updateTasks = this._taskService.findForUser({userName:this.username}).subscribe((userTasks)=>
       {
         userTasks.forEach((task)=> {
+          console.log(task);
           this._taskService.update(task.id,
             {
               userName: localStorage.getItem("cashedUsername"),
