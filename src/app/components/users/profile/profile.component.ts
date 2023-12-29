@@ -167,7 +167,7 @@ export class ProfileComponent {
       this.updateTasks = this._taskService.findForUser({userName:this.userP.userName}).subscribe((userTasks)=>
       {
         userTasks.forEach((task)=> {
-          console.log(task);
+          console.log(this.userP);
           this._taskService.update(task.id,
             {
               username: this.userP.userName
