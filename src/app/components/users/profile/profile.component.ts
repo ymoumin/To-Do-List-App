@@ -170,7 +170,7 @@ export class ProfileComponent {
           console.log(task);
           this._taskService.update(task.id,
             {
-              userName: this.userP.userName
+              username: this.userP.userName
             }).subscribe((res)=>{
             console.log(res)})
         })
