@@ -122,10 +122,10 @@ export class TaskDashboardComponent {
     this.dialogRef = this.dialog.open(AddTaskDialog, {
       data: {username: this.username},
       disableClose:true
-      }).afterClosed().subscribe(()=>{
+      }).beforeClosed().subscribe(()=>{
         this.getAllTasks();
-        window.location.reload();
-      });
+      })
+    window.location.reload();
   }
   protected readonly window = window;
 }
@@ -183,7 +183,6 @@ export class AddTaskDialog {
         .subscribe((result)=> {
           this._snackBar.open(`Task #${result.id} Created`, 'Dismiss', {duration:1000});
           console.log("THIS TASK HAS BEEN CREATED: ",result);
-          window.location.reload();
         });
 
   }
