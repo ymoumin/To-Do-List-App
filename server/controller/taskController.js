@@ -90,7 +90,7 @@ exports.update = (req, res) => {
                 });
             } else {
                 res.send({
-                    message: `Cannot update Task with id=${id}. Maybe Task was not found or req.body is empty!`
+                    message: `Cannot update Task with id=${id}. Maybe Task was not found or req.body is empty! ${req.body}`
                 });
             }
         })
