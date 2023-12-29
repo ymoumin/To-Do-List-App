@@ -150,12 +150,12 @@ export class ProfileComponent {
     console.log(this.user.valid);
     if(this.user.valid) {
       this.updateUser = this._authenticationService.update(this.userP.id,{
-        userName: this.user.value.userName,
+        userName: this.user.value?.userName,
         email: this.user.value.email,
         password: this.user.value.password
       }).subscribe((res) => {
 
-        this.username = this.user.value.userName;
+        this.username = this.user.value?.userName;
         this.email = this.user.value.email;
         this.password = this.user.value.password;
         console.log(res);
@@ -166,7 +166,7 @@ export class ProfileComponent {
             console.log(this.userP);
             this._taskService.update(task.id,
               {
-                username:this.userP.userName
+                username:this.username
               }).subscribe((res)=>{
               console.log(res)})
           })
@@ -178,7 +178,7 @@ export class ProfileComponent {
 
 
 
-      localStorage.setItem("cashedUsername",this.user.value.userName);
+      localStorage.setItem("cashedUsername",this.user.value?.userName);
       localStorage.setItem("cashedEmail",this.user.value.email);
       localStorage.setItem("cashedPassword",this.user.value.password);
     }
@@ -187,7 +187,7 @@ export class ProfileComponent {
   isDiff(){
     this.isUpdated = this._authenticationService.get(this.user.value.email).pipe(take(1))
       .subscribe((result)=> {
-        this.disabled = (result.userName !== this.username) || (result.email !== this.email) || (result.password !== this.password) ;
+        this.disabled = (result?.userName !== this.username) || (result.email !== this.email) || (result.password !== this.password) ;
       });
   }
 
