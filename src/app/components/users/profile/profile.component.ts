@@ -176,7 +176,8 @@ export class ProfileComponent {
         });
 
         this._snackBar.open(`User ${this.username} Updated`, 'Dismiss', {duration:1000});
-        window.location.reload();
+        //window.location.reload();
+        this.edit = false;
       });
 
 
