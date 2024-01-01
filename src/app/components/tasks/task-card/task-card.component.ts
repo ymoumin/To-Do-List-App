@@ -41,7 +41,7 @@ export class TaskCardComponent implements OnInit {
           disableClose:true,
             data: { id : this.task.id }
         }).afterClosed().subscribe(()=>{
-            this.refreshTasks.emit();
+          this.refreshTasks.emit();
         });
     }
 
@@ -150,15 +150,12 @@ export class EditTaskDialog {
   }
 
   isDiff(){
-    if(this.isUpdated){
-      this.isUpdated.unsubscribe();
-    }
     this.isUpdated = this._taskService.get(this.data.id).pipe(take(1))
       .subscribe((result)=> {
         console.log(JSON.stringify(result) === JSON.stringify(this.data));
           this.disabled = JSON.stringify(result) !== JSON.stringify(this.data);
-        });
-      }
+      });
+  }
 
 
   isValid(){
@@ -172,6 +169,9 @@ export class EditTaskDialog {
         console.log("THIS TASK HAS BEEN UPDATED: ",result);
         this.refreshTasks.emit();
       });
+    if(this.isUpdated){
+      this.isUpdated.unsubscribe();
+    }
     this.dialogRef.close();
   }
 
