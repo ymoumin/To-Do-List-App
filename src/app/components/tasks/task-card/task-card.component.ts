@@ -138,9 +138,6 @@ export class EditTaskDialog {
   disabled= false;
 
   ngOnInit() {
-    if(this.isUpdated){
-      this.isUpdated.unsubscribe();
-    }
   }
 
   ngOnDestroy(){
@@ -163,15 +160,15 @@ export class EditTaskDialog {
   }
 
   onSubmit(){
+    if(this.isUpdated){
+      this.isUpdated.unsubscribe();
+    }
     this.updateTask = this._taskService.update(this.data.id,this.data)
       .subscribe((result)=> {
         this._snackBar.open(`Task #${this.data.id} Updated`, 'Dismiss', {duration:1000});
         console.log("THIS TASK HAS BEEN UPDATED: ",result);
         this.refreshTasks.emit();
       });
-    if(this.isUpdated){
-      this.isUpdated.unsubscribe();
-    }
     this.dialogRef.close();
   }
 
