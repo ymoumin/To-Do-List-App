@@ -192,6 +192,8 @@ export class ProfileComponent {
       .subscribe((result)=> {
         this.disabled = (result?.userName !== this.username) || (result.email !== this.email) || (result.password !== this.password) ;
       });
+    this.retrieveEmail();
+    this.retrieveName();
   }
 
   logOut(){
