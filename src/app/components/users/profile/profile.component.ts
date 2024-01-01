@@ -113,15 +113,19 @@ export class ProfileComponent {
   }
 
   retrieveName(){
-    this.getUserName = this._authenticationService.getUser(this.user.value.userName).subscribe((res)=>{
-      this.usernameAlreadyExists = res != undefined || res != null;
-    })
+    if(!this.disabled) {
+      this.getUserName = this._authenticationService.getUser(this.user.value.userName).subscribe((res) => {
+        this.usernameAlreadyExists = res != undefined || res != null;
+      })
+    }
   }
 
   retrieveEmail(){
-    this.getUserEmail = this._authenticationService.get(this.user.value.email).subscribe((res)=>{
-      this.emailAlreadyExists = res != undefined || res != null;
-    })
+    if(!this.disabled) {
+      this.getUserEmail = this._authenticationService.get(this.user.value.email).subscribe((res) => {
+        this.emailAlreadyExists = res != undefined || res != null;
+      })
+    }
   }
 
   enableEdit(){

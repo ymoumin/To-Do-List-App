@@ -1,9 +1,9 @@
-import {Component, EventEmitter, Inject, Output} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {TaskService} from '../../../services/tasks/task.service';
-import { ITask} from '../../../model/task.model';
+import {ITask} from '../../../model/task.model';
 import {CdkDragDrop, transferArrayItem} from '@angular/cdk/drag-drop';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
-import { FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {SubscriptionLike} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -125,7 +125,7 @@ export class TaskDashboardComponent {
       data: {username: this.username},
       disableClose:true
       }).afterClosed().subscribe(()=>{
-        this.getAllTasks();
+        this.getAllTasks(); window.location.reload();
       })
   }
   protected readonly window = window;
@@ -164,7 +164,7 @@ export class AddTaskDialog {
   ngOnInit() {
     //get this user's latest task (+1 = current task number)
     console.log(this.data.username);
-    this.getLatest = this._taskService.findLatest(`{"username":"${this.data.username}"}`)
+    this.getLatest = this._taskService.getAll()
         .subscribe(d => this.latestId = d.length == 0 ? '1' : d.reduce((p,c) => p.id > c.id ? p : c).id +1);
   }
 
@@ -185,7 +185,6 @@ export class AddTaskDialog {
           this._snackBar.open(`Task #${result.id} Created`, 'Dismiss', {duration:1000});
           console.log("THIS TASK HAS BEEN CREATED: ",result);
         });
-
   }
 
   onNoClick(): void {
