@@ -5,13 +5,13 @@
 
   <button *ngIf="_router.url=='/tasks/'+cashedUsername" disableRipple="true" class="top-menu" mat-button [matMenuTriggerFor]="menu">
     <mat-card-header>
-      <img  src="/assets/avatar.png" mat-card-avatar class="example-header-image" alt="">
+      <img src="/assets/sadYeti.png" mat-card-avatar class="example-header-image" alt="">
       <mat-card-title>{{cashedUsername}}</mat-card-title>
     </mat-card-header>
   </button>
   <mat-menu class="menu-list" #menu="matMenu" xPosition="after">
     <mat-card-header>
-      <img src="/assets/avatar.png" mat-card-avatar class="example-header-image" alt="">
+      <img src="/assets/sadYeti.png" mat-card-avatar class="example-header-image" alt="">
       <mat-card-title>{{cashedUsername|uppercase}}</mat-card-title>
       <mat-card-subtitle>{{cashedEmail}}</mat-card-subtitle>
     </mat-card-header>

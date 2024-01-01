@@ -17,7 +17,7 @@
 }
 
 .password-input.ng-invalid:has(input:not(:placeholder-shown))  {
-  padding-bottom: 50px; 
+  padding-bottom: 50px;
 }
 
 .full-width-input{
@@ -91,7 +91,7 @@ mat-grid-tile {
 .overview mat-card{
   height: 100%;
   width: auto;
-  background-image: url("/assets/avatar.png");
+  background-image: url("/assets/avatar.png") !important;
   background-size: 600px;
   background-repeat: no-repeat;
   background-position-y: -80px;
