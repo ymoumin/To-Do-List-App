@@ -150,6 +150,9 @@ export class EditTaskDialog {
   }
 
   isDiff(){
+    if(this.isUpdated){
+      this.isUpdated.unsubscribe();
+    }
     this.isUpdated = this._taskService.get(this.data.id).pipe(take(1))
       .subscribe((result)=> {
         console.log(JSON.stringify(result) === JSON.stringify(this.data));
