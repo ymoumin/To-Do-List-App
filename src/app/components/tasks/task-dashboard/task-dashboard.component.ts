@@ -81,7 +81,7 @@ export class TaskDashboardComponent {
       this.dialogRef.unsubscribe();
     }
     if(this.sub){
-      this.dialogRef.unsubscribe();
+      this.sub.unsubscribe();
     }
   }
 
@@ -115,7 +115,6 @@ export class TaskDashboardComponent {
         event.currentIndex
     );
     this.showEmpty = true;
-    window.location.reload();
   }
 
   openDialog(): void {
@@ -123,7 +122,7 @@ export class TaskDashboardComponent {
       data: {username: this.username},
       disableClose:true
       }).afterClosed().subscribe(()=>{
-        window.location.reload();
+        this.getAllTasks();
       })
   }
   protected readonly window = window;
