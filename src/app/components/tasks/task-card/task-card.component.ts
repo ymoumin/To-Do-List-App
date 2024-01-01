@@ -141,9 +141,6 @@ export class EditTaskDialog {
   }
 
   ngOnDestroy(){
-    if(this.isUpdated){
-      this.isUpdated.unsubscribe();
-    }
   }
 
   isDiff(){
