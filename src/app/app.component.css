@@ -43,6 +43,10 @@
   background-color: #eee;
 }
 
+.menu{
+  margin-left: 8%;
+}
+
 .top-menu img {
   height: 70px;
   width: 70px;
