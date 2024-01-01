@@ -73,7 +73,7 @@
                 <mat-form-field class="full-width-input">
                   <input (change)="retrieveName()" [readonly]="!edit" matInput #userName [(ngModel)]="username" placeholder="Username" maxlength="10" formControlName="userName" required>
                   <mat-hint *ngIf="disabled">{{userName.value?.length || 0}}/10</mat-hint>
-                  <mat-error *ngIf="edit"> Minimum Required characters {{userName.value?.length || 0}}/5 </mat-error>
+                  <mat-error *ngIf="edit && !usernameAlreadyExists"> Minimum Required characters {{userName.value?.length || 0}}/5 </mat-error>
                   <mat-error *ngIf="usernameAlreadyExists"> Username already taken</mat-error>
                 </mat-form-field>
               </div>
@@ -83,7 +83,7 @@
                 <label>Email: </label>
                 <mat-form-field class="full-width-input">
                   <input (change)="retrieveEmail()" [readonly]="!edit" matInput [(ngModel)]="email" placeholder="Email" formControlName="email" required>
-                  <mat-error *ngIf="edit"> Please provide a valid email address </mat-error>
+                  <mat-error *ngIf="edit && !emailAlreadyExists"> Please provide a valid email address </mat-error>
                   <mat-error *ngIf="emailAlreadyExists"> Email already taken</mat-error>
                 </mat-form-field>
               </div>
@@ -105,7 +105,7 @@
               <div *ngIf="edit">
                 <label>Confirm Password: </label>
                 <mat-form-field  class="full-width-input">
-                  <input [type]="hide2 ? 'password' : 'text'" [readonly]="!edit" matInput show-hide-input #secondPassword type="password" placeholder="Confirm New Password" formControlName="confirmedPassword">
+                  <input [type]="hide2 ? 'password' : 'text'" [readonly]="!edit" matInput #secondPassword type="password" placeholder="Confirm New Password" formControlName="confirmedPassword">
                   <button class="show" mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
                     <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
                   </button>
