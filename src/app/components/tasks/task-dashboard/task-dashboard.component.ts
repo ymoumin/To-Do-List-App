@@ -94,7 +94,7 @@ export class TaskDashboardComponent {
       this.sub = this._taskService.update(task.id,'{"status":"'+ event.container.id+'"}')
           .subscribe(() =>  { this.getAllTasks()});
     }
-    window.location.reload();
+
   }
 
   refreshTasks(){
@@ -115,14 +115,15 @@ export class TaskDashboardComponent {
         event.currentIndex
     );
     this.showEmpty = true;
+    window.location.reload();
   }
 
   openDialog(): void {
     this.dialogRef = this.dialog.open(AddTaskDialog, {
       data: {username: this.username},
       disableClose:true
-      }).beforeClosed().subscribe(()=>{
-        this.getAllTasks();
+      }).afterClosed().subscribe(()=>{
+        window.location.reload();
       })
   }
   protected readonly window = window;
