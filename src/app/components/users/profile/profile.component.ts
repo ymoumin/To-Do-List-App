@@ -45,6 +45,7 @@ export class ProfileComponent {
 
   emailAlreadyExists = false;
   usernameAlreadyExists = false;
+  emailValid: boolean = true;
 
   constructor(private _authenticationService : AuthenticationService,
               private _taskService: TaskService,
@@ -84,6 +85,7 @@ export class ProfileComponent {
       if (control!.value !== matchingControl!.value) {
         const error = { confirmedValidator: 'Passwords do not match.' };
         matchingControl!.setErrors(error);
+        this.emailValid = false;
         return error;
       } else {
         matchingControl!.setErrors(null);
