@@ -85,7 +85,6 @@ export class ProfileComponent {
       if (control!.value !== matchingControl!.value) {
         const error = { confirmedValidator: 'Passwords do not match.' };
         matchingControl!.setErrors(error);
-        this.emailValid = false;
         return error;
       } else {
         matchingControl!.setErrors(null);
@@ -117,13 +116,18 @@ export class ProfileComponent {
     this.getUserName = this._authenticationService.getUser(this.user.value.userName).subscribe((res)=>{
       this.usernameAlreadyExists = res != undefined || res != null;
     })
+    if(this.getUserName){
+      this.getUserName.unsubscribe();
+    }
   }
 
   retrieveEmail(){
     this.getUserEmail = this._authenticationService.get(this.user.value.email).subscribe((res)=>{
       this.emailAlreadyExists = res != undefined || res != null;
     })
-
+    if(this.getUserEmail){
+      this.getUserEmail.unsubscribe();
+    }
   }
 
   enableEdit(){
