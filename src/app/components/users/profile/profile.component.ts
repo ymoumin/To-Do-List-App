@@ -113,19 +113,15 @@ export class ProfileComponent {
   }
 
   retrieveName(){
-    if(!this.disabled) {
       this.getUserName = this._authenticationService.getUser(this.user.value.userName).subscribe((res) => {
-        this.usernameAlreadyExists = res != undefined || res != null;
+        this.usernameAlreadyExists = (res != undefined || res != null) && res?.email !== this.email;
       })
-    }
   }
 
   retrieveEmail(){
-    if(!this.disabled) {
       this.getUserEmail = this._authenticationService.get(this.user.value.email).subscribe((res) => {
-        this.emailAlreadyExists = res != undefined || res != null;
+        this.emailAlreadyExists = (res != undefined || res != null) && res?.userName !== this.username;
       })
-    }
   }
 
   enableEdit(){
@@ -197,9 +193,10 @@ export class ProfileComponent {
   }
 
   isDiff(){
-    this.isUpdated = this._authenticationService.get(this.user.value.email).pipe(take(1))
+    this.isUpdated = this._authenticationService.get(this.user.value.email)
       .subscribe((result)=> {
-        this.disabled = (result?.userName !== this.username) || (result.email !== this.email) || (result.password !== this.password) ;
+        //enabled condition below
+        this.disabled = result?.userName !== this.username || result.email !== this.email;
       });
     this.retrieveEmail();
     this.retrieveName();
