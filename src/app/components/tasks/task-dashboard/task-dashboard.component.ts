@@ -70,10 +70,6 @@ export class TaskDashboardComponent {
           let fC = this.todo.length > this.inProgress.length ? this.todo.length : this.inProgress.length;
           this.longestCat = fC > this.done.length ? fC : this.done.length;
 
-          if(this.longestCat > 1){
-            this.limit = 2;
-          }
-
           this.todo = data.filter(d => d.status == 'TO DO' && d.username == this.username).slice(this.limit == 1 ? (this.todo.length <= 1 ? 0 : -1 - this.index) : (this.todo.length <= 2 ? 0 : -2 - this.index * 2), this.limit === 1 ? this.todo.length - this.index  : this.todo.length - this.index * 2);
           this.inProgress = data.filter(d => d.status == 'DOING' && d.username == this.username).slice(this.limit === 1 ? (this.inProgress.length <= 1 ? 0 : -1 - this.index) : (this.inProgress.length <= 2 ? 0 : -2 - this.index * 2), this.limit === 1 ? this.inProgress.length - this.index  : this.inProgress.length - this.index * 2);
           this.done = data.filter(d => d.status == 'DONE' && d.username == this.username).slice(this.limit === 1 ? (this.done.length <= 1 ? 0 : -1 - this.index ) : (this.done.length <= 2 ? 0 : -2 - this.index * 2), this.limit === 1 ? this.done.length - this.index  : this.done.length - this.index * 2);
