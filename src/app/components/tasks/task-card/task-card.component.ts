@@ -50,7 +50,7 @@ export class TaskCardComponent implements OnInit {
         disableClose:true,
         data: this.task,
       }).afterClosed().subscribe(()=>{
-        this.refreshTasks.emit();
+        //this.refreshTasks.emit();
       });
     }
 
