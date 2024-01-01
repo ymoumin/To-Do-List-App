@@ -82,7 +82,7 @@
               <div>
                 <label>Email: </label>
                 <mat-form-field class="full-width-input">
-                  <input [readonly]="!edit" matInput #emaim [(ngModel)]="email" placeholder="Email" formControlName="emaiL" required>
+                  <input [readonly]="!edit" matInput [(ngModel)]="email" placeholder="Email" formControlName="email" required>
                   <mat-error *ngIf="edit && !emailAlreadyExists && !emailValid"> Please provide a valid email address </mat-error>
                   <mat-error *ngIf="emailAlreadyExists"> Email already taken</mat-error>
                 </mat-form-field>
