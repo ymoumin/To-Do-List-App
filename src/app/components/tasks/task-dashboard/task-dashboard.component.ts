@@ -118,6 +118,9 @@ export class TaskDashboardComponent {
   }
 
   openDialog(): void {
+    if(this.dialogRef){
+      this.dialogRef.unsubscribe();
+    }
     this.dialogRef = this.dialog.open(AddTaskDialog, {
       data: {username: this.username},
       disableClose:true
@@ -170,7 +173,6 @@ export class AddTaskDialog {
     if(this.getLatest){
       this.getLatest.unsubscribe();
     }
-    window.location.reload();
   }
 
   isValid(){
