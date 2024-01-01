@@ -94,7 +94,7 @@ export class TaskDashboardComponent {
       this.sub = this._taskService.update(task.id,'{"status":"'+ event.container.id+'"}')
           .subscribe(() =>  { this.getAllTasks()});
     }
-
+    window.location.reload();
   }
 
   refreshTasks(){
