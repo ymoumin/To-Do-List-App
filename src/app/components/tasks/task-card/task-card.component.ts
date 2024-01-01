@@ -76,15 +76,17 @@ export class DeleteTaskDialog {
         private _snackBar: MatSnackBar)
     {}
 
-    ngOnInit(){}
+    ngOnInit(){
+      if(this.deleteTask){
+        this.deleteTask.unsubscribe();
+      }
+    }
 
     ngOnDestroy(){
         if(this.deleteTask){
             this.deleteTask.unsubscribe();
         }
     }
-
-
 
     onConfirm(){
         this.deleteTask = this._taskService.delete(this.data.id).subscribe((result)=>{
@@ -136,9 +138,9 @@ export class EditTaskDialog {
   disabled= false;
 
   ngOnInit() {
-    //get this user's latest task (+1 = current task number)
-    // this.getLatest = this._taskService.findLatest('{"username":"Yassine"}')
-    //   .subscribe(d => this.latestId = d+1);
+    if(this.isUpdated){
+      this.isUpdated.unsubscribe();
+    }
   }
 
   ngOnDestroy(){
