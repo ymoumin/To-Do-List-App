@@ -116,22 +116,22 @@ export class ProfileComponent {
     this.getUserName = this._authenticationService.getUser(this.user.value.userName).subscribe((res)=>{
       this.usernameAlreadyExists = res != undefined || res != null;
     })
-    if(this.getUserName){
-      this.getUserName.unsubscribe();
-    }
   }
 
   retrieveEmail(){
     this.getUserEmail = this._authenticationService.get(this.user.value.email).subscribe((res)=>{
       this.emailAlreadyExists = res != undefined || res != null;
     })
-    if(this.getUserEmail){
-      this.getUserEmail.unsubscribe();
-    }
   }
 
   enableEdit(){
     this.edit = !this.edit;
+    if(this.getUserName){
+      this.getUserName.unsubscribe();
+    }
+    if(this.getUserEmail){
+      this.getUserEmail.unsubscribe();
+    }
   }
 
   getUser(){
@@ -185,8 +185,6 @@ export class ProfileComponent {
         //window.location.reload();
         this.edit = false;
       });
-
-
 
       localStorage.setItem("cashedUsername",this.user.value?.userName);
       localStorage.setItem("cashedEmail",this.user.value.email);
